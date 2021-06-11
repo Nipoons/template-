@@ -1,0 +1,75 @@
+@media screen and (min-width: 768px)  {
+    button {
+        width: 7rem;
+    }
+    .col-1{
+        width: 9rem;
+        /* background-color: ghostwhite; */
+        
+    }
+    
+    #length{
+        height: 100vh;
+    }
+
+        
+        .btn-outline-primary
+        {
+            
+            color: rgb(19, 114, 192);
+            border-color: rgb(19, 114, 192);
+        }
+        .btn-outline-primary:hover
+        {
+            background-color: rgb(19, 114, 192);
+        }
+        .btn-outline-danger
+        {
+            
+            color: rgb(194, 12, 12);
+            border-color: rgb(194, 12, 12);
+        }
+        .btn-outline-danger:hover
+        {
+            background-color: rgb(194, 12, 12);
+        }
+        .full{
+            height: 1000px;
+            
+        }
+        .footer {
+            
+            
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        
+    
+        text-align: left;
+        }
+        body{
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            /* background-color: gainsboro; */
+
+        }
+      
+        
+}
+#overall{
+    position: relative;
+    
+    height: 100vh;
+}
+#mt{
+
+height: 100%;
+display: flex;
+flex-direction: column;
+width: 80%;
+margin: auto;
+align-items: center;
+justify-content: center;
+text-align: center;
+}
