@@ -8,14 +8,11 @@ var txt_listener = new ROSLIB.Topic({
     messageType: 'std_msgs/String'
 });
 
-cmd_vel_listener = new ROSLIB.Topic({
+var cmd_vel_listener = new ROSLIB.Topic({
     ros: ros,
     name: "/cmd_body",
     messageType: 'geometry_msgs/Twist'
 });
-
-
-
 
 var txt_listener2 = new ROSLIB.Topic({
     ros: ros,
@@ -35,7 +32,7 @@ var type_obs = new ROSLIB.Topic({
 });
 
 
-cmd_vel_listener2 = new ROSLIB.Topic({
+var cmd_vel_listener2 = new ROSLIB.Topic({
     ros: ros,
     name: "/cmd_base",
     messageType: 'geometry_msgs/Twist'
@@ -238,4 +235,5 @@ function emer() {
     button.publish(zero);
     console.log("shut down");
 }
+
 

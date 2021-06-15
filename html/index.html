@@ -6,27 +6,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous" />
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous" />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
-    crossorigin="anonymous"></script>
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+        crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../css/index.css">
-    <script src="../js/index.js"></script>
-    <script type="text/javascript" src="http://static.robotwebtools.org/EventEmitter2/current/eventemitter2.min.js"></script>
-    <script type="text/javascript" src="http://static.robotwebtools.org/mjpegcanvasjs/current/mjpegcanvas.min.js"></script>
+    <script type="text/javascript"
+        src="http://static.robotwebtools.org/EventEmitter2/current/eventemitter2.min.js"></script>
+    <script type="text/javascript"
+        src="http://static.robotwebtools.org/mjpegcanvasjs/current/mjpegcanvas.min.js"></script>
     <script type="text/javascript" src="http://static.robotwebtools.org/roslibjs/current/roslib.min.js"></script>
     <script type="text/javascript" src="http://static.robotwebtools.org/threejs/current/three.min.js"></script>
     <script type="text/javascript" src="http://static.robotwebtools.org/threejs/current/ColladaLoader.min.js"></script>
-    <script type="text/javascript" src="http://static.robotwebtools.org/ColladaAnimationCompress/current/ColladaLoader2.min.js"></script>
+    <script type="text/javascript"
+        src="http://static.robotwebtools.org/ColladaAnimationCompress/current/ColladaLoader2.min.js"></script>
     <script type="text/javascript" src="http://static.robotwebtools.org/threejs/current/STLLoader.min.js"></script>
     <script type="text/javascript" src="http://static.robotwebtools.org/ros3djs/current/ros3d.min.js"></script>
-    
+    <script src="../js/index.js"></script>
+
 
     <title>Document</title>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-image: linear-gradient(rgb(238, 106, 29),rgb(233, 109, 37));">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light"
+        style="background-image: linear-gradient(rgb(238, 106, 29),rgb(233, 109, 37));">
         <div class="container-fluid">
             <a class="navbar-brand" href="#" style="color: #fff;">MRP Automation</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -61,7 +65,7 @@
                             </li>
                         </ul>
                     </li>
-                    
+
                 </ul>
                 <div class="d-flex nav-item">
                     <a class="nav-link" aria-current="page" href="#" style="color: #fff;">Log out</a>
@@ -72,18 +76,19 @@
     </nav>
     <div class="container-fluid">
         <div id="full">
-            <!-- button control  -->
             <div class="row m-1">
+                <!-- button control  -->
                 <div class="col-1 m-1 p-2 border">
                     <h5 style="color:rgb(104, 103, 103); ">Power</h5>
-                    <button id="togglebutton" class="btn btn-outline-success mt-1 ms-2 mb-1 " onclick="power()">Power on</button>
+                    <button id="togglebutton" class="btn btn-outline-success mt-1 ms-2 mb-1 " onclick="power()">Power
+                        on</button>
                     <h5 style="color:rgb(104, 103, 103);">Shape</h5>
                     <button class="btn btn-outline-primary mt-1 ms-2 mb-1 " onclick="circle()">Circle</button>
                     <button class="btn btn-outline-primary mt-1 ms-2 mb-1" onclick="rectangle()">Rectangle</button>
                     <h5 style="color:rgb(104, 103, 103)">Color</h5>
                     <button class="btn btn-outline-primary mt-1 ms-2 mb-1" onclick="red()">Red</button>
                     <button class="btn btn-outline-primary mt-1 ms-2 mb-1" onclick="green()">Green</button>
-        
+
                     <h5 style="color:rgb(104, 103, 103)">Position</h5>
                     <button class="btn btn-outline-primary mt-1 ms-2 mb-1" onclick="box1()">Box 1</button>
                     <button class="btn btn-outline-primary mt-1 ms-2 mb-1" onclick="box2()">Box 2</button>
@@ -91,7 +96,7 @@
 
                     <h5 style="color:rgb(104, 103, 103)">Reset</h5>
                     <button class="btn btn-outline-primary mt-1 ms-2 mb-1 " onclick="clearReset()">Reset</button>
-    
+
                     <h5 style="color:rgb(104, 103, 103)">Emergency</h5>
                     <button class="btn btn-outline-danger mt-1 ms-2 mb-1 " onclick="emer()">Shut down</button>
                 </div>
@@ -100,7 +105,8 @@
                         <div class="row gx-2 p-3 ">
                             <div class="col-sm">
                                 <div class="card">
-                                    <div class="card-header p-2" style="color: #fff; background-image: linear-gradient(rgb(16, 98, 153),rgb(22, 89, 175));">
+                                    <div class="card-header p-2"
+                                        style="color: #fff; background-image: linear-gradient(rgb(16, 98, 153),rgb(22, 89, 175));">
                                         <h5>Server</h5>
                                     </div>
                                     <div class="card-body">
@@ -110,29 +116,32 @@
                             </div>
                             <div class="col-sm">
                                 <div class="card">
-                                    <div class="card-header p-2" style="color: #fff; background-image: linear-gradient(rgb(16, 98, 153),rgb(22, 89, 175));">
+                                    <div class="card-header p-2"
+                                        style="color: #fff; background-image: linear-gradient(rgb(16, 98, 153),rgb(22, 89, 175));">
                                         <h5 style="text-transform: uppercase;">Power</h5>
                                     </div>
                                     <div class="card-body">
                                         <h6 id="onoff">Off</h6>
                                     </div>
                                 </div>
-                                
+
                             </div>
                             <div class="col-sm">
                                 <div class="card">
-                                    <div class="card-header p-2" style="color: #fff; background-image: linear-gradient(rgb(16, 98, 153),rgb(22, 89, 175));">
+                                    <div class="card-header p-2"
+                                        style="color: #fff; background-image: linear-gradient(rgb(16, 98, 153),rgb(22, 89, 175));">
                                         <h5>Shape</h5>
                                     </div>
                                     <div class="card-body">
                                         <h6 id="shape">...</h6>
                                     </div>
                                 </div>
-                                
+
                             </div>
                             <div class="col-sm">
                                 <div class="card">
-                                    <div class="card-header p-2" style="color: #fff; background-image: linear-gradient(rgb(16, 98, 153),rgb(22, 89, 175));">
+                                    <div class="card-header p-2"
+                                        style="color: #fff; background-image: linear-gradient(rgb(16, 98, 153),rgb(22, 89, 175));">
                                         <h5>Color</h5>
                                     </div>
                                     <div class="card-body">
@@ -142,7 +151,8 @@
                             </div>
                             <div class="col-sm">
                                 <div class="card">
-                                    <div class="card-header p-2" style="color: #fff; background-image: linear-gradient(rgb(16, 98, 153),rgb(22, 89, 175));">
+                                    <div class="card-header p-2"
+                                        style="color: #fff; background-image: linear-gradient(rgb(16, 98, 153),rgb(22, 89, 175));">
                                         <h5>Position</h5>
                                     </div>
                                     <div class="card-body">
@@ -150,19 +160,111 @@
                                     </div>
                                 </div>
                             </div>
-                        
+
                         </div>
                         <div class="row gx-2 p-3 justify-content-between">
                             <div class="col-sm-5  border">
                                 <h5 style="color:rgb(104, 103, 103)">Controller</h5>
-                                <button class="btn btn-outline-primary mt-1 ms-2 mb-1">Box 1</button>
-                 
+                                <div class="slidecontainer">
+                                    <input type="range" min="0" max="100" step="0.01" value="50" class="slider" id="myRange">
+                                    <p>Value: <span id="demo"></span></p>
+                                </div>
+                                <div class="slidecontainer">
+                                    <input type="range" min="0" max="100" step="0.01" value="50" class="slider" id="myRange2">
+                                    <p>Value: <span id="demo2"></span></p>
+                                </div>
+                                <div class="slidecontainer">
+                                    <input type="range" min="0" max="100" step="0.01" value="50" class="slider" id="myRange3">
+                                    <p>Value: <span id="demo3"></span></p>
+                                </div>
+                                <div class="slidecontainer">
+                                    <input type="range" min="0" max="100" step="0.01" value="50" class="slider" id="myRange4">
+                                    <p>Value: <span id="demo4"></span></p>
+                                </div>
+                                <div class="slidecontainer">
+                                    <input type="range" min="0" max="100" step="0.01" value="50" class="slider" id="myRange5">
+                                    <p>Value: <span id="demo5"></span></p>
+                                </div>
+                                <script>
+                                    var button = new ROSLIB.Topic({
+                                        ros: ros,
+                                        name: "/slideControl",
+                                        messageType: "std_msgs/Float32MultiArray"
+                                    });
+                                    // publish to ros code here
+                                    var a = [50,50,50,50,50]
+                                    
+                                    var slider = document.getElementById("myRange");
+                                    var output = document.getElementById("demo");
+                                    var slider2 = document.getElementById("myRange2");
+                                    var output2 = document.getElementById("demo2");
+                                    var slider3 = document.getElementById("myRange3");
+                                    var output3 = document.getElementById("demo3");
+                                    var slider4 = document.getElementById("myRange4");
+                                    var output4 = document.getElementById("demo4");
+                                    var slider5 = document.getElementById("myRange5");
+                                    var output5 = document.getElementById("demo5");
+
+                                    output.innerHTML = slider.value;
+                                    output2.innerHTML = slider2.value;
+                                    output3.innerHTML = slider3.value;
+                                    output4.innerHTML = slider4.value;
+                                    output5.innerHTML = slider5.value;
+                                    
+
+
+                                    slider.oninput = function () {
+                                        output.innerHTML = this.value;
+                                        a[0] =Number(output.innerHTML) 
+
+                                        console.log(a)
+                                    }
+                                    slider2.oninput = function () {
+                                        output2.innerHTML = this.value;
+                                        var join2=output2.innerHTML
+                                        
+                                        
+                                        a[1] = Number(join2)
+
+                                        console.log(a)
+                                    }
+                                    slider3.oninput = function () {
+                                        output3.innerHTML = this.value;
+                                        var join3=output3.innerHTML
+                                        
+                                        
+                                        a[2] = Number(join3)
+
+                                        console.log(a)
+                                    } 
+                                    slider4.oninput = function () {
+                                        output4.innerHTML = this.value;
+                                        var join4=output4.innerHTML
+                                        
+                                        
+                                        a[3] = Number(join4)
+
+                                        console.log(a)
+                                    } 
+                                    slider5.oninput = function () {
+                                        output5.innerHTML = this.value;
+                                        var join5=output5.innerHTML
+                                        
+                                        
+                                        a[4] = Number(join5)
+
+                                        console.log(a)
+                                    }
+                                </script>
                                 <!-- code controller here -->
-                            
+
                             </div>
                             <div class="col-sm-5  border">
                                 <h5 style="color:rgb(104, 103, 103)">Camera</h5>
-            
+                                <div class="urdf"></div>
+
+
+
                             </div>
                         </div>
                     </div>
@@ -171,7 +273,7 @@
                             <h5 style="color:rgb(104, 103, 103)">Object detect</h5>
                             <div class="col-2">
                                 <div class="card" style="display: none;">
-                                    <div class="card-body" >
+                                    <div class="card-body">
                                         <h6 id="type_objectsGC"></h6>
                                     </div>
                                 </div>
@@ -199,23 +301,23 @@
                             </div>
                         </div>
                     </div>
-                    
+
                 </div>
-        
+
             </div>
         </div>
-       
+
 
     </div>
-    
-    
+
+
 </body>
 <footer class="bg-light text-center text-lg-start">
-    
+
     <div class="text-start p-3" style="background-color: rgba(247, 109, 17, 0.877); color: #fff;">
-      © 2020 Automation Engineering AE08
+        © 2020 Automation Engineering AE08
     </div>
 
-  </footer>
+</footer>
 
 </html>
