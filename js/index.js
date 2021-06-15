@@ -121,8 +121,8 @@ createViewer2 = function () {
     var viewer = new MJPEGCANVAS.Viewer({
         divID: 'mjpeg2',
         host: 'localhost',
-        width: 450,
-        height: 240,
+        width: 224,
+        height: 224,
         topic: 'image_topic'
     });
 }
@@ -133,8 +133,8 @@ window.onload = function () {
     
     var viewer = new ROS3D.Viewer({
         divID: 'urdf',
-        width: 600,
-        height: 530,
+        width: 224,
+        height: 224,
         background: '#0574AF',
         antialias: true
     });
