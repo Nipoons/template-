@@ -50,6 +50,7 @@ type_obs.subscribe(function (k) {
 
     if (k.data.includes(1)) {
         document.getElementById("type_objectsGC").innerHTML = "G - C";
+        document.getElementsByClassName("gc").style.background="	#008000";
     }
     else {
         document.getElementById("type_objectsGC").innerHTML = [];
@@ -74,6 +75,8 @@ type_obs.subscribe(function (k) {
 
     if (k.data.includes(2)) {
         document.getElementById("type_objectsGR").innerHTML = "G - R";
+        document.getElementsByClassName("gr").style.background="	#008000";
+
 
     }
     else {

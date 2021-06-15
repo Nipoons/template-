@@ -163,7 +163,7 @@
 
                         </div>
                         <div class="row gx-2 p-3 justify-content-between">
-                            <div class="col-sm-5  border">
+                            <div class="col-5  border">
                                 <h5 style="color:rgb(104, 103, 103)">Controller</h5>
                                 <div class="slidecontainer">
                                     <input type="range" min="0" max="100" step="0.01" value="50" class="slider" id="myRange">
@@ -204,6 +204,7 @@
                                     var output4 = document.getElementById("demo4");
                                     var slider5 = document.getElementById("myRange5");
                                     var output5 = document.getElementById("demo5");
+                                    
 
                                     output.innerHTML = slider.value;
                                     output2.innerHTML = slider2.value;
@@ -256,12 +257,23 @@
                                         console.log(a)
                                     }
                                 </script>
-                                <!-- code controller here -->
+                                <!-- code controller here  -->
 
                             </div>
-                            <div class="col-sm-5  border">
+                            <div class="col-5 p-1 border">
                                 <h5 style="color:rgb(104, 103, 103)">Camera</h5>
-                                <div class="urdf"></div>
+                                <div class="row justify-content-center mb-2">
+                                    <div class="col-10 border" style="height: 14rem;">
+                                        <div class="urdf"></div>
+                                    </div>
+
+                                </div>
+                                <div class="row justify-content-center">
+                                    <div class="col-10 border mb-2" style="height: 14rem;">
+                                        <div class="urdf"></div>
+                                    </div>
+
+                                </div>
 
 
 
@@ -273,28 +285,28 @@
                             <h5 style="color:rgb(104, 103, 103)">Object detect</h5>
                             <div class="col-2">
                                 <div class="card" style="display: none;">
-                                    <div class="card-body">
+                                    <div class="card-body gc>
                                         <h6 id="type_objectsGC"></h6>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-2">
                                 <div class="card" style="display: none;">
-                                    <div class="card-body">
+                                    <div class="card-body gr">
                                         <h6 id="type_objectsGR"></h6>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-2">
                                 <div class="card" style="display: none;">
-                                    <div class="card-body">
+                                    <div class="card-body rc">
                                         <h6 id="type_objectsRC"></h6>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-2">
-                                <div class="card" style="display: none;">
-                                    <div class="card-body">
+                                <div class="card" style="display: default;">
+                                    <div class="card-body rr">
                                         <h6 id="type_objectsRR"></h6>
                                     </div>
                                 </div>
