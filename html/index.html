@@ -5,12 +5,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous" />
+    <link rel="stylesheet" href="../css/index.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
         crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../css/index.css">
     <script type="text/javascript"
         src="http://static.robotwebtools.org/EventEmitter2/current/eventemitter2.min.js"></script>
     <script type="text/javascript"
@@ -22,6 +23,7 @@
         src="http://static.robotwebtools.org/ColladaAnimationCompress/current/ColladaLoader2.min.js"></script>
     <script type="text/javascript" src="http://static.robotwebtools.org/threejs/current/STLLoader.min.js"></script>
     <script type="text/javascript" src="http://static.robotwebtools.org/ros3djs/current/ros3d.min.js"></script>
+    <script src="path/to/vanilla.js"></script>
     <script src="../js/index.js"></script>
 
 
@@ -100,7 +102,7 @@
                     <h5 style="color:rgb(104, 103, 103)">Emergency</h5>
                     <button class="btn btn-outline-danger mt-1 ms-2 mb-1 " onclick="emer()">Shut down</button>
                 </div>
-                <div id="length" class="col m-1">
+                <div class="col m-1">
                     <div class="border mb-2  ">
                         <div class="row gx-2 p-3 ">
                             <div class="col-sm">
@@ -163,27 +165,131 @@
 
                         </div>
                         <div class="row gx-2 p-3 justify-content-between">
+
+                            <div class="col-5 p-1 border">
+                                <h5 style="color:rgb(104, 103, 103)">Model</h5>
+                                <div class="row justify-content-center mb-2">
+                                    <div class="col-10 border" style="height: 23rem;">
+                                        <div class="urdf"></div>
+                                    </div>
+                                </div>
+
+                            </div>
                             <div class="col-5  border">
-                                <h5 style="color:rgb(104, 103, 103)">Controller</h5>
-                                <div class="slidecontainer">
-                                    <input type="range" min="0" max="100" step="0.01" value="50" class="slider" id="myRange">
-                                    <p>Value: <span id="demo"></span></p>
+                                <div class="row justify-content-center ">
+
+                                    <h5 style="color:rgb(104, 103, 103)">Camera</h5>
+                                    <div class="col-10 border mb-2" style="height: 14rem;">
+                                        <div id="mjpeg2"></div>
+                                        
+                                    </div>
                                 </div>
-                                <div class="slidecontainer">
-                                    <input type="range" min="0" max="100" step="0.01" value="50" class="slider" id="myRange2">
-                                    <p>Value: <span id="demo2"></span></p>
+
+
+                                <div class="row">
+                                    <h5 style="color:rgb(104, 103, 103)">Object detect: <span id="num_objects"
+                                            style="color:rgb(104, 103, 103)">None</span></h5>
+                                    <div class="row justify-content-around mb-3">
+                                        <div class="col-4">
+                                            <div class="card">
+                                                <div class="card-body ">
+                                                    <h6 id="type_objectsGC">1</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <h6 id="type_objectsGR">2</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row justify-content-around mb-3">
+                                        <div class="col-4">
+                                            <div class="card">
+                                                <div class="card-body ">
+                                                    <h6 id="type_objectsRC">3</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            <div class="card">
+                                                <div class="card-body ">
+                                                    <h6 id="type_objectsRR">4</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
                                 </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="border mb-2 p-1">
+                        <h5 style="color:rgb(104, 103, 103)">Controller</h5>
+                        <div class="row gx-2 p-3 justify-content-between">
+                            <div class="col border p-2">
                                 <div class="slidecontainer">
-                                    <input type="range" min="0" max="100" step="0.01" value="50" class="slider" id="myRange3">
-                                    <p>Value: <span id="demo3"></span></p>
+                                    <h5>joint1
+                                        <span>
+                                            <input type="range" min="0" max="3.14" step="0.01" value="" class="slider"
+                                                id="myRange">
+                                            <h6>Value: <span id="demo"></span></h6>
+                                        </span>
+                                    </h5>
                                 </div>
+                                <hr />
                                 <div class="slidecontainer">
-                                    <input type="range" min="0" max="100" step="0.01" value="50" class="slider" id="myRange4">
-                                    <p>Value: <span id="demo4"></span></p>
+                                    <h5>joint2
+                                        <span> <input type="range" min="0" max="3.14" step="0.01" value=""
+                                                class="slider" id="myRange2">
+                                            <h6>Value: <span id="demo2"></span></h6>
+                                        </span>
+                                    </h5>
                                 </div>
+                                <hr/>
                                 <div class="slidecontainer">
-                                    <input type="range" min="0" max="100" step="0.01" value="50" class="slider" id="myRange5">
-                                    <p>Value: <span id="demo5"></span></p>
+                                    <h5>joint3
+                                        <span>
+                                            <input type="range" min="0" max="3.14" step="0.01" value="" class="slider"
+                                                id="myRange3">
+                                            <h6>Value: <span id="demo3"></span></h6>
+                                        </span>
+                                    </h5>
+                                </div>
+                                <hr/>
+                                <div class="slidecontainer">
+                                    <h5>joint4
+                                        <span>
+                                            <input type="range" min="0" max="3.14" step="0.01" value="" class="slider"
+                                                id="myRange4">
+                                            <h6>Value: <span id="demo4"></span></h6>
+                                        </span>
+                                    </h5>
+                                </div>
+                                <hr/>
+                                <div class="slidecontainer">
+                                    <h5>joint5
+                                        <span>
+                                            <input type="range" min="0" max="3.14" step="0.01" value="" class="slider"
+                                                id="myRange5">
+                                            <h6>Value: <span id="demo5"></span></h6>
+                                        </span>
+                                    </h5>
+                                </div>
+                                <hr/>
+                                <div class="slidecontainer">
+                                    <h5>joint6
+                                        <span>
+                                            <input type="range" min="0" max="3.14" step="0.01" value="" class="slider"
+                                                id="myRange6">
+                                            <h6>Value: <span id="demo6"></span></h6>
+                                        </span>
+                                    </h5>
                                 </div>
                                 <script>
                                     var button = new ROSLIB.Topic({
@@ -192,8 +298,8 @@
                                         messageType: "std_msgs/Float32MultiArray"
                                     });
                                     // publish to ros code here
-                                    var a = [50,50,50,50,50]
-                                    
+                                    var a = [1.57, 1.57, 1.57, 1.57, 1.57, 1.57]
+
                                     var slider = document.getElementById("myRange");
                                     var output = document.getElementById("demo");
                                     var slider2 = document.getElementById("myRange2");
@@ -204,109 +310,77 @@
                                     var output4 = document.getElementById("demo4");
                                     var slider5 = document.getElementById("myRange5");
                                     var output5 = document.getElementById("demo5");
-                                    
+                                    var slider6 = document.getElementById("myRange6");
+                                    var output6 = document.getElementById("demo6");
+
 
                                     output.innerHTML = slider.value;
                                     output2.innerHTML = slider2.value;
                                     output3.innerHTML = slider3.value;
                                     output4.innerHTML = slider4.value;
                                     output5.innerHTML = slider5.value;
-                                    
+                                    output6.innerHTML = slider6.value;
 
 
-                                    slider.oninput = function () {
+
+
+                                    slider.onchange = function () {
                                         output.innerHTML = this.value;
-                                        a[0] =Number(output.innerHTML) 
+                                        a[0] = Number(output.innerHTML)
 
                                         console.log(a)
                                     }
-                                    slider2.oninput = function () {
+                                    slider2.onchange = function () {
                                         output2.innerHTML = this.value;
-                                        var join2=output2.innerHTML
-                                        
-                                        
+                                        var join2 = output2.innerHTML
+
+
                                         a[1] = Number(join2)
 
                                         console.log(a)
                                     }
-                                    slider3.oninput = function () {
+                                    slider3.onchange = function () {
                                         output3.innerHTML = this.value;
-                                        var join3=output3.innerHTML
-                                        
-                                        
+                                        var join3 = output3.innerHTML
+
+
                                         a[2] = Number(join3)
 
                                         console.log(a)
-                                    } 
-                                    slider4.oninput = function () {
+                                    }
+                                    slider4.onchange = function () {
                                         output4.innerHTML = this.value;
-                                        var join4=output4.innerHTML
-                                        
-                                        
+                                        var join4 = output4.innerHTML
+
+
                                         a[3] = Number(join4)
 
                                         console.log(a)
-                                    } 
-                                    slider5.oninput = function () {
+                                    }
+                                    slider5.onchange = function () {
                                         output5.innerHTML = this.value;
-                                        var join5=output5.innerHTML
-                                        
-                                        
+                                        var join5 = output5.innerHTML
+
+
                                         a[4] = Number(join5)
+
+                                        console.log(a)
+                                    }
+                                    slider6.onchange = function () {
+                                        output5.innerHTML = this.value;
+                                        var join5 = output6.innerHTML
+
+
+                                        a[5] = Number(join5)
 
                                         console.log(a)
                                     }
                                 </script>
                                 <!-- code controller here  -->
 
-                            </div>
-                            <div class="col-5 p-1 border">
-                                <h5 style="color:rgb(104, 103, 103)">Camera</h5>
-                                <div class="row justify-content-center mb-2">
-                                    <div class="col-10 border" style="height: 14rem;">
-                                        <div class="urdf"></div>
-                                    </div>
-                                </div>
-                                <div class="row justify-content-center">
-                                    <div class="col-10 border mb-2" style="height: 14rem;">
-                                        <div id="mjpeg2"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="border mb-2">
-                        <div class="row gx-2 p-3 justify-content-between">
-                            <h5 style="color:rgb(104, 103, 103)">Object detect: </h5><span id="num_objects" style="color: #333;"></span>
 
-                            <div class="col-2">
-                                <div class="card" style="display: none;">
-                                    <div class="card-body gc>
-                                        <h6 id="type_objectsGC"></h6>
-                                    </div>
-                                </div>
                             </div>
-                            <div class="col-2">
-                                <div class="card" style="display: none;">
-                                    <div class="card-body gr">
-                                        <h6 id="type_objectsGR"></h6>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-2">
-                                <div class="card" style="display: none;">
-                                    <div class="card-body rc">
-                                        <h6 id="type_objectsRC"></h6>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-2">
-                                <div class="card" style="display: default;">
-                                    <div class="card-body rr">
-                                        <h6 id="type_objectsRR"></h6>
-                                    </div>
-                                </div>
-                            </div>
+
                         </div>
                     </div>
 

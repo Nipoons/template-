@@ -7,9 +7,7 @@
     /* background-color: ghostwhite; */
 }
 
-#length {
-    height: 100vh;
-}
+
 
 .btn-outline-primary {
     color: rgb(19, 114, 192);
@@ -98,3 +96,4 @@ height: 100vh;
     background: #da115e; /* Green background */
     cursor: pointer; /* Cursor on hover */
 }
+

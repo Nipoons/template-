@@ -113,23 +113,76 @@ ros.on('error', function (error) {
 });
 
 ros.on('close', function () {
-    document.getElementById("status").innerHTML = "Disconnrct";
+    document.getElementById("status").innerHTML = "Disconnect";
 
 });
 
-createViewer2 = function () {
-    var viewer = new MJPEGCANVAS.Viewer({
-        divID: 'mjpeg2',
-        host: 'localhost',
-        width: 224,
-        height: 224,
-        topic: 'image_topic'
-    });
-}
+
+    
+    createViewer2 = function () {
+        if(window.innerWidth>1700){
+            var viewer = new MJPEGCANVAS.Viewer({
+                divID: 'mjpeg2',
+                host: 'localhost',
+                height:220,
+                width:300,
+                topic: 'image_topic'
+            });
+
+        }
+        else if(window.innerWidth<1700){
+            var viewer = new MJPEGCANVAS.Viewer({
+                divID: 'mjpeg2',
+                host: 'localhost',
+                height:220,
+                width:200,
+                topic: 'image_topic'
+            });
+        }
+    }
+
+
+
+
+
 window.onload = function () {
     
+    $(document).ready(function () {
+        $.ajax({
+            url:ros,
+            type:"GET",
+            cache:false,
+            success:function(respons){
+                console.log("refresh")
+                
+            }
+        })
+        setInterval(function(){
+            $('#mjpec2').load("index.html");
+            createViewer2();
+            console.log("refresh");
+        },1000)
+    });
+        
 
-    createViewer2();
+
+    // $(document).ready(function(){
+    //     if(window.innerWidth>1700){
+    //     $("#mjpec2").get("index.html", createViewer2(300,200));
+    //     }
+    //     else if(window.innerWidth<1700){
+    //         $("#mjpec2").get("index.html", createViewer2(200,200));
+    //     }
+        
+    // })
+    // if(window.innerWidth>1700){
+    //     createViewer2(500,220);
+    // }
+    // else if(window.innerWidth<1700){
+    //     createViewer2(350,220);
+        
+    // }
+
     
     var viewer = new ROS3D.Viewer({
         divID: 'urdf',
@@ -164,7 +217,7 @@ window.onload = function () {
 }
 //button
 var toggle = false;
-function power(v) {
+function power() {
     if (toggle == true) {
         document.getElementById("onoff").innerHTML = "Off";
         document.getElementById("togglebutton").className = "btn btn-outline-success mt-1 ms-2 mb-1";
@@ -190,10 +243,13 @@ function clearReset() {
     console.log("reset");
 }//reset shape color and position
 function circle() {
+    
     document.getElementById("shape").innerHTML = "Circle";
     button.publish(three);
 
     console.log("Circle");
+    console.log(window.innerWidth);
+    
 }
 function rectangle() {
     document.getElementById("shape").innerHTML = "Rectangle";
