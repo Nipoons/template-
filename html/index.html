@@ -23,14 +23,16 @@
         src="http://static.robotwebtools.org/ColladaAnimationCompress/current/ColladaLoader2.min.js"></script>
     <script type="text/javascript" src="http://static.robotwebtools.org/threejs/current/STLLoader.min.js"></script>
     <script type="text/javascript" src="http://static.robotwebtools.org/ros3djs/current/ros3d.min.js"></script>
-    <script src="path/to/vanilla.js"></script>
+    <!-- <script src="path/to/vanilla.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="../js/index.js"></script>
 
 
     <title>Document</title>
 </head>
 
-<body>
+<body id="app" onresize="location.reload()">
     <nav class="navbar navbar-expand-lg navbar-light bg-light"
         style="background-image: linear-gradient(rgb(238, 106, 29),rgb(233, 109, 37));">
         <div class="container-fluid">
@@ -81,6 +83,8 @@
             <div class="row m-1">
                 <!-- button control  -->
                 <div class="col-1 m-1 p-2 border">
+                    <h5 style="color:rgb(104, 103, 103); ">Websocket </h5>
+                    <button  class="btn btn-outline-success mt-1 ms-2 mb-1 " onclick="connect">Connect</button>
                     <h5 style="color:rgb(104, 103, 103); ">Power</h5>
                     <button id="togglebutton" class="btn btn-outline-success mt-1 ms-2 mb-1 " onclick="power()">Power
                         on</button>
@@ -112,7 +116,7 @@
                                         <h5>Server</h5>
                                     </div>
                                     <div class="card-body">
-                                        <h6 id="status"></h6>
+                                        <h6 id="status" class="refresher">Disconnect</h6>
                                     </div>
                                 </div>
                             </div>
@@ -179,8 +183,8 @@
                                 <div class="row justify-content-center ">
 
                                     <h5 style="color:rgb(104, 103, 103)">Camera</h5>
-                                    <div class="col-10 border mb-2" style="height: 14rem;">
-                                        <div id="mjpeg2"></div>
+                                    <div class="col-10  mb-2" style="height: 14rem;">
+                                        <div id="mjpeg2" style="position: relative; height: 600;" ></div>
                                         
                                     </div>
                                 </div>
@@ -191,34 +195,22 @@
                                             style="color:rgb(104, 103, 103)">None</span></h5>
                                     <div class="row justify-content-around mb-3">
                                         <div class="col-4">
-                                            <div class="card">
-                                                <div class="card-body ">
-                                                    <h6 id="type_objectsGC">1</h6>
-                                                </div>
-                                            </div>
+                                            <h6 id="type_objectsGC"></h6>
+                                            
                                         </div>
                                         <div class="col-4">
-                                            <div class="card">
-                                                <div class="card-body">
-                                                    <h6 id="type_objectsGR">2</h6>
-                                                </div>
-                                            </div>
+                                            <h6 id="type_objectsGR"></h6>
+                                        
                                         </div>
                                     </div>
                                     <div class="row justify-content-around mb-3">
                                         <div class="col-4">
-                                            <div class="card">
-                                                <div class="card-body ">
-                                                    <h6 id="type_objectsRC">3</h6>
-                                                </div>
-                                            </div>
+                                            <h6 id="type_objectsRC"></h6>
+                                            
                                         </div>
                                         <div class="col-4">
-                                            <div class="card">
-                                                <div class="card-body ">
-                                                    <h6 id="type_objectsRR">4</h6>
-                                                </div>
-                                            </div>
+                                            <h6 id="type_objectsRR"></h6>
+                                        
                                         </div>
 
                                     </div>
@@ -231,9 +223,9 @@
                     </div>
                     <div class="border mb-2 p-1">
                         <h5 style="color:rgb(104, 103, 103)">Controller</h5>
-                        <div class="row gx-2 p-3 justify-content-between">
-                            <div class="col border p-2">
-                                <div class="slidecontainer">
+                        <div class="row gx-2 p-3 ">
+                            <div class="col border p-2 " >
+                                <div class="slidecontainer" style="align-items: center;">
                                     <h5>joint1
                                         <span>
                                             <input type="range" min="0" max="3.14" step="0.01" value="" class="slider"

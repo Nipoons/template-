@@ -102,6 +102,7 @@ var seven = new ROSLIB.Message({data:7});//box2
 var eight = new ROSLIB.Message({data:8});//box3
 
 ros.on('connection', function () {
+    
     document.getElementById("status").innerHTML = "Connected";
 
 });
@@ -120,7 +121,7 @@ ros.on('close', function () {
 
     
     createViewer2 = function () {
-        if(window.innerWidth>1700){
+        if(window.innerWidth>1200){
             var viewer = new MJPEGCANVAS.Viewer({
                 divID: 'mjpeg2',
                 host: 'localhost',
@@ -130,14 +131,42 @@ ros.on('close', function () {
             });
 
         }
-        else if(window.innerWidth<1700){
+        else if(window.innerWidth<=1200 && window.innerWidth>=1100 ){
             var viewer = new MJPEGCANVAS.Viewer({
                 divID: 'mjpeg2',
                 host: 'localhost',
-                height:220,
-                width:200,
+                height:320,
+                width:300,
                 topic: 'image_topic'
             });
+        }
+        else if(window.innerWidth<1100 && window.innerWidth>=950 ){
+            var viewer = new MJPEGCANVAS.Viewer({
+                divID: 'mjpeg2',
+                host: 'localhost',
+                height:320,
+                width:250,
+                topic: 'image_topic'
+            });
+        }
+        else if(window.innerWidth<950 && window.innerWidth>=900 ){
+            var viewer = new MJPEGCANVAS.Viewer({
+                divID: 'mjpeg2',
+                host: 'localhost',
+                height:320,
+                width:230,
+                topic: 'image_topic'
+            });
+        }
+        else{
+            var viewer = new MJPEGCANVAS.Viewer({
+                divID: 'mjpeg2',
+                host: 'localhost',
+                height:320,
+                width:190,
+                topic: 'image_topic'
+            });
+
         }
     }
 
@@ -146,42 +175,12 @@ ros.on('close', function () {
 
 
 window.onload = function () {
+  
+        
+  
     
-    $(document).ready(function () {
-        $.ajax({
-            url:ros,
-            type:"GET",
-            cache:false,
-            success:function(respons){
-                console.log("refresh")
-                
-            }
-        })
-        setInterval(function(){
-            $('#mjpec2').load("index.html");
-            createViewer2();
-            console.log("refresh");
-        },1000)
-    });
-        
+    createViewer2();
 
-
-    // $(document).ready(function(){
-    //     if(window.innerWidth>1700){
-    //     $("#mjpec2").get("index.html", createViewer2(300,200));
-    //     }
-    //     else if(window.innerWidth<1700){
-    //         $("#mjpec2").get("index.html", createViewer2(200,200));
-    //     }
-        
-    // })
-    // if(window.innerWidth>1700){
-    //     createViewer2(500,220);
-    // }
-    // else if(window.innerWidth<1700){
-    //     createViewer2(350,220);
-        
-    // }
 
     
     var viewer = new ROS3D.Viewer({
