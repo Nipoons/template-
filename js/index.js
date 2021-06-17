@@ -50,10 +50,10 @@ type_obs.subscribe(function (k) {
 
     if (k.data.includes(1)) {
         document.getElementById("type_objectsGC").innerHTML = "G - C";
-        document.getElementsByClassName("gc").style.background="	#008000";
+        
     }
     else {
-        document.getElementById("type_objectsGC").innerHTML = [];
+        document.getElementById("type_objectsGC").innerHTML = [ ];
     }
 
     if (k.data.includes(0)) {
@@ -61,27 +61,28 @@ type_obs.subscribe(function (k) {
 
     }
     else {
-        document.getElementById("type_objectsRC").innerHTML = [];
+        document.getElementById("type_objectsRC").innerHTML = [ ];
     }
 
 
     if (k.data.includes(3)) {
         document.getElementById("type_objectsRR").innerHTML = "R - R";
+       
 
     }
     else {
-        document.getElementById("type_objectsRR").innerHTML = [];
+        document.getElementById("type_objectsRR").innerHTML = [ ];
     }
 
     if (k.data.includes(2)) {
         document.getElementById("type_objectsGR").innerHTML = "G - R";
-        document.getElementsByClassName("gr").style.background="	#008000";
+        
 
 
     }
     else {
 
-        document.getElementById("type_objectsGR").innerHTML = [];
+        document.getElementById("type_objectsGR").innerHTML = [ ];
 
     }
 
@@ -125,8 +126,8 @@ ros.on('close', function () {
             var viewer = new MJPEGCANVAS.Viewer({
                 divID: 'mjpeg2',
                 host: 'localhost',
-                height:220,
-                width:300,
+                height:220*2,
+                width:300*2,
                 topic: 'image_topic'
             });
 
@@ -185,8 +186,8 @@ window.onload = function () {
     
     var viewer = new ROS3D.Viewer({
         divID: 'urdf',
-        width: 224,
-        height: 224,
+        height:220*2,
+        width:300*2,
         background: '#0574AF',
         antialias: true
     });
@@ -206,7 +207,7 @@ window.onload = function () {
     var urdfClient = new ROS3D.UrdfClient({
         ros: ros,
         tfClient: tfClient,
-        path: 'https://raw.githubusercontent.com/maxauto/urdf_robot_arm/main/max/',
+        path: 'https://raw.githubusercontent.com/rusdee-auto11/braccio_urdf/main/braccio/',
         rootObject: viewer.scene,
         loader: ROS3D.COLLADA_LOADER_2
     });

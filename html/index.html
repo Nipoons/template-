@@ -174,42 +174,46 @@
                                 <h5 style="color:rgb(104, 103, 103)">Model</h5>
                                 <div class="row justify-content-center mb-2">
                                     <div class="col-10 border" style="height: 23rem;">
-                                        <div class="urdf"></div>
+                                        <div id="urdf"></div>
                                     </div>
                                 </div>
 
                             </div>
                             <div class="col-5  border">
-                                <div class="row justify-content-center ">
+                                <div class="row justify-content-center mb-5 " >
 
                                     <h5 style="color:rgb(104, 103, 103)">Camera</h5>
-                                    <div class="col-10  mb-2" style="height: 14rem;">
+                                    <div class="col-10  mb-2" style="height: 27rem;">
                                         <div id="mjpeg2" style="position: relative; height: 600;" ></div>
                                         
                                     </div>
                                 </div>
 
 
-                                <div class="row">
+                                <div class="row mt-5">
                                     <h5 style="color:rgb(104, 103, 103)">Object detect: <span id="num_objects"
                                             style="color:rgb(104, 103, 103)">None</span></h5>
                                     <div class="row justify-content-around mb-3">
                                         <div class="col-4">
-                                            <h6 id="type_objectsGC"></h6>
+                                            <h4 id="type_objectsGC" style="text-align: center; color: #fff; background-color: green;border-radius: 5px;"></h4>
+
                                             
                                         </div>
                                         <div class="col-4">
-                                            <h6 id="type_objectsGR"></h6>
+                                            <h4 id="type_objectsGR" style="text-align: center; color: #fff; background-color: green;border-radius: 5px;"></h4>
+
                                         
                                         </div>
                                     </div>
                                     <div class="row justify-content-around mb-3">
                                         <div class="col-4">
-                                            <h6 id="type_objectsRC"></h6>
+                                            <h4 id="type_objectsRC" style="text-align: center; color: #fff; background-color: rgb(184, 4, 22);border-radius: 5px;"></h4>
+
                                             
                                         </div>
                                         <div class="col-4">
-                                            <h6 id="type_objectsRR"></h6>
+                                            <h4 id="type_objectsRR" style="text-align: center; color: #fff; background-color: rgb(184, 4, 22);border-radius: 5px;" ></h4>
+
                                         
                                         </div>
 
@@ -290,7 +294,29 @@
                                         messageType: "std_msgs/Float32MultiArray"
                                     });
                                     // publish to ros code here
-                                    var a = [1.57, 1.57, 1.57, 1.57, 1.57, 1.57]
+                                    var a=[];
+                                    var joint_states = new ROSLIB.Topic({
+                                        ros: ros,
+                                        name: "joint_states",
+                                        messageType: "sensor_msgs/JointState"
+                                    });
+                                    joint_states.subscribe(function (m) {
+                                        var val = m.position[0];
+                                        console.log(val)
+                                      
+                                        a = m.position;
+                                        console.log(a);
+                                        
+                                        //feedback joint states
+
+                                    });
+
+                                    aj = function (data) {
+                                        var j = new ROSLIB.Message({
+                                            data: data
+                                        });
+                                        button.publish(j);
+                                    }
 
                                     var slider = document.getElementById("myRange");
                                     var output = document.getElementById("demo");
@@ -319,53 +345,49 @@
                                     slider.onchange = function () {
                                         output.innerHTML = this.value;
                                         a[0] = Number(output.innerHTML)
-
+                                
                                         console.log(a)
+                                        aj(a);
                                     }
                                     slider2.onchange = function () {
                                         output2.innerHTML = this.value;
                                         var join2 = output2.innerHTML
-
-
                                         a[1] = Number(join2)
 
                                         console.log(a)
+                                        aj(a);
                                     }
                                     slider3.onchange = function () {
                                         output3.innerHTML = this.value;
                                         var join3 = output3.innerHTML
-
-
                                         a[2] = Number(join3)
 
                                         console.log(a)
+                                        aj(a);
                                     }
                                     slider4.onchange = function () {
                                         output4.innerHTML = this.value;
                                         var join4 = output4.innerHTML
-
-
                                         a[3] = Number(join4)
 
                                         console.log(a)
+                                        aj(a);
                                     }
                                     slider5.onchange = function () {
                                         output5.innerHTML = this.value;
                                         var join5 = output5.innerHTML
-
-
                                         a[4] = Number(join5)
 
                                         console.log(a)
+                                        aj(a);
                                     }
                                     slider6.onchange = function () {
                                         output5.innerHTML = this.value;
                                         var join5 = output6.innerHTML
-
-
                                         a[5] = Number(join5)
 
                                         console.log(a)
+                                        aj(a);
                                     }
                                 </script>
                                 <!-- code controller here  -->
