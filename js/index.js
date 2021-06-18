@@ -177,8 +177,137 @@ ros.on('close', function () {
 
 window.onload = function () {
   
+    
+    var button = new ROSLIB.Topic({
+        ros: ros,
+        name: "/slideControl",
+        messageType: "std_msgs/Float32MultiArray"
+    });
+    // publish to ros code here
+    
+    var joint_states = new ROSLIB.Topic({
+        ros: ros,
+        name: "joint_states",
+        messageType: "sensor_msgs/JointState"
+    });
+
+    var a=[1,2,3,1,2,3] // test feedback
+    console.log(a);
+    
+    joint_states.subscribe(function (m) {
+        var val = m.position[0];
+        console.log(val)
+      
+        a = m.position;
+        console.log(a);
         
-  
+        //feedback joint states
+
+    });
+
+    aj = function (data) {
+        var j = new ROSLIB.Message({
+            data: data
+        });
+        button.publish(j);
+    }
+
+    var slider = document.getElementById("myRange");
+    var output = document.getElementById("demo");
+    var slider2 = document.getElementById("myRange2");
+    var output2 = document.getElementById("demo2");
+    var slider3 = document.getElementById("myRange3");
+    var output3 = document.getElementById("demo3");
+    var slider4 = document.getElementById("myRange4");
+    var output4 = document.getElementById("demo4");
+    var slider5 = document.getElementById("myRange5");
+    var output5 = document.getElementById("demo5");
+    var slider6 = document.getElementById("myRange6");
+    var output6 = document.getElementById("demo6");
+
+    slider.value = a[0];
+    slider2.value = a[1];
+    slider3.value = a[2];
+    slider4.value = a[3];
+    slider5.value = a[4];
+    slider6.value = a[5];
+
+    output.innerHTML = slider.value;
+    output2.innerHTML = slider2.value;
+    output3.innerHTML = slider3.value;
+    output4.innerHTML = slider4.value;
+    output5.innerHTML = slider5.value;
+    output6.innerHTML = slider6.value;
+
+
+
+    
+    slider.oninput = function () {
+        output.innerHTML = this.value;
+    }
+    slider.onchange = function () {
+        var join = output.innerHTML
+        console.log(join)
+        a[0] = Number(join)
+        console.log(a)
+        aj(a);
+    }
+    slider2.oninput = function () {
+        output2.innerHTML = this.value;
+    }
+    
+    slider2.onchange = function () {
+        output2.innerHTML = this.value;
+        var join2 = output2.innerHTML
+        a[1] = Number(join2)
+
+        console.log(a)
+        aj(a);
+    }
+    slider3.oninput = function () {
+        output3.innerHTML = this.value;
+    }
+    slider3.onchange = function () {
+        output3.innerHTML = this.value;
+        var join3 = output3.innerHTML
+        a[2] = Number(join3)
+
+        console.log(a)
+        aj(a);
+    }
+    slider4.oninput = function () {
+        output4.innerHTML = this.value;
+    }
+    slider4.onchange = function () {
+        output4.innerHTML = this.value;
+        var join4 = output4.innerHTML
+        a[3] = Number(join4)
+
+        console.log(a)
+        aj(a);
+    }
+    slider5.oninput = function () {
+        output5.innerHTML = this.value;
+    }
+    slider5.onchange = function () {
+        output5.innerHTML = this.value;
+        var join5 = output5.innerHTML
+        a[4] = Number(join5)
+
+        console.log(a)
+        aj(a);
+    }
+    slider6.oninput = function () {
+        output6.innerHTML = this.value;
+    }
+    slider6.onchange = function () {
+        output6.innerHTML = this.value;
+        var join6 = output6.innerHTML
+        a[5] = Number(join6)
+
+        console.log(a)
+        aj(a);
+    }
     
     createViewer2();
 
