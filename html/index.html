@@ -24,19 +24,20 @@
     <script type="text/javascript" src="http://static.robotwebtools.org/threejs/current/STLLoader.min.js"></script>
     <script type="text/javascript" src="http://static.robotwebtools.org/ros3djs/current/ros3d.min.js"></script>
     <!-- <script src="path/to/vanilla.js"></script> -->
-    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- <script src="https://kit.fontawesome.com/a076d05399.js"></script> -->
     <script src="../js/index.js"></script>
 
 
-    <title>Document</title>
+    <title>MRP Automation</title>
 </head>
 
-<body onresize="location.reload()">
+<body onresize="location.reload()" >
     <nav class="navbar navbar-expand-lg navbar-light bg-light"
         style="background-image: linear-gradient(rgb(238, 106, 29),rgb(233, 109, 37));">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#" style="color: #fff;">MRP Automation</a>
+            <h5 class="navbar-brand"  style="color: #fff; cursor: default;"><i class="fas fa-code-branch"></i> MRP Automation</h5>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation" style="background-color: rgba(255, 248, 248, 0.836);">
@@ -83,7 +84,7 @@
             <div class="row m-1">
                 <!-- button control  -->
                 <div class="col-1 m-1 p-2 border">
-                   
+
                     <h5 style="color:rgb(104, 103, 103); ">Power</h5>
                     <button id="togglebutton" class="btn btn-outline-success mt-1 ms-2 mb-1 " onclick="power()">Power
                         on</button>
@@ -105,6 +106,7 @@
                     <h5 style="color:rgb(104, 103, 103)">Emergency</h5>
                     <button class="btn btn-outline-danger mt-1 ms-2 mb-1 " onclick="emer()">Shut down</button>
                 </div>
+                <!-- main -->
                 <div class="col m-1">
                     <div class="border mb-2  ">
                         <div class="row gx-2 p-3 ">
@@ -165,69 +167,61 @@
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                         <div class="row gx-2 p-3 justify-content-between">
-
+                            <!-- robot model -->
                             <div class="col-5 p-1 border">
                                 <h5 style="color:rgb(104, 103, 103)">Model</h5>
-                                <div class="row justify-content-center mb-2">
-                                    <div class="col-10 border" style="height: 23rem;">
-                                        <!-- <div id="urdf"></div> -->
-                                    </div>
+                                <div class="border" style="height: 23rem;">
+                                    <!-- <div id="urdf"></div> -->
                                 </div>
-
                             </div>
+                            <!-- column 2 show camera stream and object -->
                             <div class="col-5  border">
-                                <div class="row justify-content-center mb-5 " >
-
+                                <div class="row justify-content-center mb-5 ">
                                     <h5 style="color:rgb(104, 103, 103)">Camera</h5>
                                     <div class="col-10  mb-2" style="height: 27rem;">
                                         <!-- <div id="mjpeg2" style="position: relative; height: 600;" ></div> -->
-                                        
                                     </div>
                                 </div>
                                 <div class="row mt-5">
                                     <h5 style="color:rgb(104, 103, 103)">Object detect: <span id="num_objects"
                                             style="color:rgb(104, 103, 103)">None</span></h5>
                                     <div class="row justify-content-around mb-3">
-                                        <div class="col-4">
-                                            <h4 id="type_objectsGC" style="text-align: center; color: #fff; background-color: green;border-radius: 5px;"></h4>
-
-                                            
+                                        <div class="col-4 ">
+                                            <h3 id="type_objectsGC"
+                                                style="text-align: center; color: #fff; background-color: green;border-radius: 5px;">
+                                            </h3>
                                         </div>
                                         <div class="col-4">
-                                            <h4 id="type_objectsGR" style="text-align: center; color: #fff; background-color: green;border-radius: 5px;"></h4>
-
-                                        
+                                            <h3 id="type_objectsGR"
+                                                style="text-align: center; color: #fff; background-color: green;border-radius: 5px;">
+                                            </h3>
                                         </div>
                                     </div>
                                     <div class="row justify-content-around mb-3">
                                         <div class="col-4">
-                                            <h4 id="type_objectsRC" style="text-align: center; color: #fff; background-color: rgb(184, 4, 22);border-radius: 5px;"></h4>
-
-                                            
+                                            <h3 id="type_objectsRC"
+                                                style="text-align: center; color: #fff; background-color: rgb(184, 4, 22);border-radius: 5px;">
+                                            </h3>
                                         </div>
                                         <div class="col-4">
-                                            <h4 id="type_objectsRR" style="text-align: center; color: #fff; background-color: rgb(184, 4, 22);border-radius: 5px;" ></h4>
-
-                                        
+                                            <h3 id="type_objectsRR"
+                                                style="text-align: center; color: #fff; background-color: rgb(184, 4, 22);border-radius: 5px;">
+                                            </h3>
                                         </div>
-
                                     </div>
-
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
-
                 </div>
-                <div class="col-2 m-1 border">
+                <!-- controller -->
+                <div class="col-2 m-1 p-2 border">
                     <div>
                         <h5 style="color:rgb(104, 103, 103)">Controller</h5>
                         <div class="row gx-2 p-3 ">
-                            <div class="col p-2 " >
+                            <div class="col p-2 ">
                                 <div class="slidecontainer" style="align-items: center;">
                                     <h5>joint1
                                         <span>
@@ -246,7 +240,7 @@
                                         </span>
                                     </h5>
                                 </div>
-                                <hr/>
+                                <hr />
                                 <div class="slidecontainer">
                                     <h5>joint3
                                         <span>
@@ -256,7 +250,7 @@
                                         </span>
                                     </h5>
                                 </div>
-                                <hr/>
+                                <hr />
                                 <div class="slidecontainer">
                                     <h5>joint4
                                         <span>
@@ -266,7 +260,7 @@
                                         </span>
                                     </h5>
                                 </div>
-                                <hr/>
+                                <hr />
                                 <div class="slidecontainer">
                                     <h5>joint5
                                         <span>
@@ -276,7 +270,7 @@
                                         </span>
                                     </h5>
                                 </div>
-                                <hr/>
+                                <hr />
                                 <div class="slidecontainer">
                                     <h5>joint6
                                         <span>
@@ -286,22 +280,12 @@
                                         </span>
                                     </h5>
                                 </div>
-                                <script>
-                                    
-                                </script>
-                                <!-- code controller here  -->
-
-
                             </div>
-
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
-
-
     </div>
 
 

@@ -4,6 +4,7 @@
 }
 .col-1 {
     width: 9rem;
+    
     /* background-color: ghostwhite; */
 }
 
@@ -96,4 +97,7 @@ height: 100vh;
     background: #da115e; /* Green background */
     cursor: pointer; /* Cursor on hover */
 }
+/* #full{
+    height: 100vh;
+} */
 
