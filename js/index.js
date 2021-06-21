@@ -187,7 +187,96 @@ createViewer2 = function () {
 
 window.onload = function () {
 
+    var c =document.getElementById("shape").value;
+    console.log(c)
 
+
+
+    // Get the modal
+    var modal = document.getElementById('id01');
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+   
+
+    createViewer2();
+
+
+
+    var viewer = new ROS3D.Viewer({
+        divID: 'urdf',
+        height: 220 * 2,
+        width: 300 * 2,
+        background: '#0574AF',
+        antialias: true
+    });
+
+    // Add a grid.
+    viewer.addObject(new ROS3D.Grid());
+
+    // Setup a client to listen to TFs.
+    var tfClient = new ROSLIB.TFClient({
+        ros: ros,
+        angularThres: 0.01,
+        transThres: 0.01,
+        rate: 10.0
+    });
+
+    // Setup the URDF client.
+    var urdfClient = new ROS3D.UrdfClient({
+        ros: ros,
+        tfClient: tfClient,
+        path: 'https://raw.githubusercontent.com/rusdee-auto11/braccio_urdf/main/braccio/',
+        rootObject: viewer.scene,
+        loader: ROS3D.COLLADA_LOADER_2
+    });
+
+
+
+}
+//button
+var toggle = false;
+function power() {
+    if (toggle == true) {
+        document.getElementById("onoff").innerHTML = "On";
+        document.getElementById("togglebutton").className = "btn btn-outline-success mt-1 ms-2 mb-1";
+        document.getElementById("togglebutton").innerHTML = "Power on";
+        toggle = false;
+        button.publish(one);
+        console.log("On");
+    }//power off
+    else {
+        document.getElementById("onoff").innerHTML = "Off";
+        document.getElementById("togglebutton").className = "btn btn-outline-danger mt-1 ms-2 mb-1";
+        document.getElementById("togglebutton").innerHTML = "Power off";
+        toggle = true;
+        button.publish(zero);
+        console.log("Off");
+    }// power on
+}
+function mode() {
+
+    if (toggle == true) {
+        // document.getElementById("onoff").innerHTML = "Off";
+        document.getElementById("togglemode").className = "btn btn-outline-danger mt-1 ms-2 mb-1";
+        document.getElementById("modechange").innerHTML = "Auto";
+        document.getElementById("joint_cont").style.display = "none";
+
+        toggle = false;
+        // button.publish(zero);
+        console.log("Auto");
+    }//power off
+    else {
+        // document.getElementById("onoff").innerHTML = "On";
+        document.getElementById("togglemode").className = "btn btn-outline-primary mt-1 ms-2 mb-1";
+        document.getElementById("modechange").innerHTML = "Manual";
+        document.getElementById("joint_cont").style.display = "initial";
+        var a = [Math.random()*3.48,Math.random()*3.48,Math.random()*3.48,Math.random()*3.48,Math.random()*3.48,Math.random()*3.48]
+        console.log(a);
 
     aj = function (data) {
         var j = new ROSLIB.Message({
@@ -195,6 +284,7 @@ window.onload = function () {
         });
         button.publish(j);
     }
+    aj(a);
 
 
     var slider1 = document.getElementById("myRange");
@@ -218,7 +308,7 @@ window.onload = function () {
     slider5.value = a[4];
     slider6.value = a[5];
 
-    output1.innerHTML = slider.value;
+    output1.innerHTML = slider1.value;
     output2.innerHTML = slider2.value;
     output3.innerHTML = slider3.value;
     output4.innerHTML = slider4.value;
@@ -296,113 +386,10 @@ window.onload = function () {
         console.log(a)
         aj(a);
     }
-
-    // Get the modal
-    var modal = document.getElementById('id01');
-
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function (event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
-    if (document.getElementById('username').value != 'admin') {
-        return error();
-    }
-
-    createViewer2();
-
-
-
-    var viewer = new ROS3D.Viewer({
-        divID: 'urdf',
-        height: 220 * 2,
-        width: 300 * 2,
-        background: '#0574AF',
-        antialias: true
-    });
-
-    // Add a grid.
-    viewer.addObject(new ROS3D.Grid());
-
-    // Setup a client to listen to TFs.
-    var tfClient = new ROSLIB.TFClient({
-        ros: ros,
-        angularThres: 0.01,
-        transThres: 0.01,
-        rate: 10.0
-    });
-
-    // Setup the URDF client.
-    var urdfClient = new ROS3D.UrdfClient({
-        ros: ros,
-        tfClient: tfClient,
-        path: 'https://raw.githubusercontent.com/rusdee-auto11/braccio_urdf/main/braccio/',
-        rootObject: viewer.scene,
-        loader: ROS3D.COLLADA_LOADER_2
-    });
-
-
-
-}
-//button
-var toggle = false;
-function power() {
-    if (toggle == true) {
-        document.getElementById("onoff").innerHTML = "Off";
-        document.getElementById("togglebutton").className = "btn btn-outline-success mt-1 ms-2 mb-1";
-        document.getElementById("togglebutton").innerHTML = "Power on";
-        toggle = false;
-        button.publish(zero);
-        console.log("Off");
-    }//power off
-    else {
-        document.getElementById("onoff").innerHTML = "On";
-        document.getElementById("togglebutton").className = "btn btn-outline-danger mt-1 ms-2 mb-1";
-        document.getElementById("togglebutton").innerHTML = "Power off";
-        toggle = true;
-        button.publish(one);
-        console.log("On");
-    }// power on
-}
-function mode() {
-
-    if (toggle != true) {
-        // document.getElementById("onoff").innerHTML = "Off";
-        document.getElementById("togglemode").className = "btn btn-outline-danger mt-1 ms-2 mb-1";
-        document.getElementById("togglemode").innerHTML = "Auto";
-        document.getElementById("joint_cont").style.display = "none";
-
-        toggle = true;
-        // button.publish(zero);
-        console.log("man");
-    }//power off
-    else {
-        // document.getElementById("onoff").innerHTML = "On";
-        document.getElementById("togglemode").className = "btn btn-outline-primary mt-1 ms-2 mb-1";
-        document.getElementById("togglemode").innerHTML = "Manual";
-        document.getElementById("joint_cont").style.display = "initial";
         // publish to ros code here
-
-
-
-        joint_states.subscribe(
-            function (m) {
-            a = m.position
-            function receive(){
-                var value = a;
-                return a
-            }
-            b = receive();
-            console.log(b);
-            //feedback joint states
-        });
-
-
-
-        toggle = false;
+        toggle = true;
         // button.publish(one);
-        console.log("au");
+        console.log("Manual");
     }// power on
 }
 function clearReset() {
@@ -413,20 +400,30 @@ function clearReset() {
     console.log("reset");
 }//reset shape color and position
 
+var c = 1
 function circle() {
+    console.log(c)
 
     document.getElementById("shape").innerHTML = "Circle";
     button.publish(three);
 
     console.log("Circle");
-    console.log(window.innerWidth);
+
+    return c++
+    
 
 }
+
+
+
 function rectangle() {
+    // var c = circle();
+    console.log(c)
     document.getElementById("shape").innerHTML = "Rectangle";
     button.publish(two);
 
     console.log("Rectangle");
+    return c--
 }
 function red() {
     document.getElementById("color").innerHTML = "Red";

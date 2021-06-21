@@ -89,10 +89,11 @@
                 <div class="col-1 m-1 p-2 border">
 
                     <h5 style="color:rgb(104, 103, 103); ">Power</h5>
-                    <button id="togglebutton" class="btn btn-outline-success mt-1 ms-2 mb-1 " onclick="power()">Power
+                    <button id="togglebutton" class="btn btn-outline-success mt-1 ms-2 mb-1 " type="button" onclick="power()">Power
                         on</button>
                     <h5 style="color:rgb(104, 103, 103); ">Mode</h5>
-                    <button id="togglemode" class="btn btn-outline-primary mt-1 ms-2 mb-1 " onclick="mode()">Manual</button>
+                    <button id="togglemode" class="btn btn-outline-primary mt-1 ms-2 mb-1 "
+                        onclick="mode()">Change</button>
                     <h5 style="color:rgb(104, 103, 103);">Shape</h5>
                     <button class="btn btn-outline-primary mt-1 ms-2 mb-1 " onclick="circle()">Circle</button>
                     <button class="btn btn-outline-primary mt-1 ms-2 mb-1" onclick="rectangle()">Rectangle</button>
@@ -133,7 +134,19 @@
                                         <h5 style="text-transform: uppercase;">Power</h5>
                                     </div>
                                     <div class="card-body">
-                                        <h6 id="onoff">Off</h6>
+                                        <h6 id="onoff">On</h6>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-sm">
+                                <div class="card">
+                                    <div class="card-header p-2"
+                                        style="color: #fff; background-image: linear-gradient(rgb(16, 98, 153),rgb(22, 89, 175));">
+                                        <h5 style="text-transform: uppercase;">Mode</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <h6 id="modechange">Auto</h6>
                                     </div>
                                 </div>
 
@@ -222,7 +235,7 @@
                     </div>
                 </div>
                 <!-- controller -->
-                <div id="joint_cont" class="col-2 m-1 p-2 border" style="display: default;">
+                <div id="joint_cont" class="col-2 m-1 p-2 border" style="display: none;">
                     <div>
                         <h5 style="color:rgb(104, 103, 103)">Controller</h5>
                         <div class="row gx-2 p-3 ">
