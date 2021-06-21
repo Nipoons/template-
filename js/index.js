@@ -50,10 +50,10 @@ type_obs.subscribe(function (k) {
 
     if (k.data.includes(1)) {
         document.getElementById("type_objectsGC").innerHTML = "G - C";
-        
+
     }
     else {
-        document.getElementById("type_objectsGC").innerHTML = [ ];
+        document.getElementById("type_objectsGC").innerHTML = [];
     }
 
     if (k.data.includes(0)) {
@@ -61,49 +61,49 @@ type_obs.subscribe(function (k) {
 
     }
     else {
-        document.getElementById("type_objectsRC").innerHTML = [ ];
+        document.getElementById("type_objectsRC").innerHTML = [];
     }
 
 
     if (k.data.includes(3)) {
         document.getElementById("type_objectsRR").innerHTML = "R - R";
-       
+
 
     }
     else {
-        document.getElementById("type_objectsRR").innerHTML = [ ];
+        document.getElementById("type_objectsRR").innerHTML = [];
     }
 
     if (k.data.includes(2)) {
         document.getElementById("type_objectsGR").innerHTML = "G - R";
-        
+
 
 
     }
     else {
 
-        document.getElementById("type_objectsGR").innerHTML = [ ];
+        document.getElementById("type_objectsGR").innerHTML = [];
 
     }
 
 });
 var button = new ROSLIB.Topic({
-    ros:ros,
+    ros: ros,
     name: "/button",
     messageType: "std_msgs/Int16"
 });
-var zero = new ROSLIB.Message({data:0});//turn off
-var one = new ROSLIB.Message({data:1});//turn on
-var two = new ROSLIB.Message({data:2});//rec shp.
-var three = new ROSLIB.Message({data:3});//cir shp.
-var four = new ROSLIB.Message({data:4});//red
-var five = new ROSLIB.Message({data:5});//green
-var six = new ROSLIB.Message({data:6});//box1
-var seven = new ROSLIB.Message({data:7});//box2
-var eight = new ROSLIB.Message({data:8});//box3
+var zero = new ROSLIB.Message({ data: 0 });//turn off
+var one = new ROSLIB.Message({ data: 1 });//turn on
+var two = new ROSLIB.Message({ data: 2 });//rec shp.
+var three = new ROSLIB.Message({ data: 3 });//cir shp.
+var four = new ROSLIB.Message({ data: 4 });//red
+var five = new ROSLIB.Message({ data: 5 });//green
+var six = new ROSLIB.Message({ data: 6 });//box1
+var seven = new ROSLIB.Message({ data: 7 });//box2
+var eight = new ROSLIB.Message({ data: 8 });//box3
 
 ros.on('connection', function () {
-    
+
     document.getElementById("status").innerHTML = "Connected";
 
 });
@@ -111,7 +111,7 @@ ros.on('connection', function () {
 ros.on('error', function (error) {
     document.getElementById("status").innerHTML = "Error";
 
-    
+
 });
 
 ros.on('close', function () {
@@ -119,91 +119,75 @@ ros.on('close', function () {
 
 });
 
+var button2 = new ROSLIB.Topic({
+    ros: ros,
+    name: "/slideControl",
+    messageType: "std_msgs/Float32MultiArray"
+});
 
-    
-    createViewer2 = function () {
-        if(window.innerWidth>1200){
-            var viewer = new MJPEGCANVAS.Viewer({
-                divID: 'mjpeg2',
-                host: 'localhost',
-                height:220*2,
-                width:300*2,
-                topic: 'image_topic'
-            });
+var joint_states = new ROSLIB.Topic({
+    ros: ros,
+    name: "joint_states",
+    messageType: "sensor_msgs/JointState"
+});
 
-        }
-        else if(window.innerWidth<=1200 && window.innerWidth>=1100 ){
-            var viewer = new MJPEGCANVAS.Viewer({
-                divID: 'mjpeg2',
-                host: 'localhost',
-                height:320,
-                width:300,
-                topic: 'image_topic'
-            });
-        }
-        else if(window.innerWidth<1100 && window.innerWidth>=950 ){
-            var viewer = new MJPEGCANVAS.Viewer({
-                divID: 'mjpeg2',
-                host: 'localhost',
-                height:320,
-                width:250,
-                topic: 'image_topic'
-            });
-        }
-        else if(window.innerWidth<950 && window.innerWidth>=900 ){
-            var viewer = new MJPEGCANVAS.Viewer({
-                divID: 'mjpeg2',
-                host: 'localhost',
-                height:320,
-                width:230,
-                topic: 'image_topic'
-            });
-        }
-        else{
-            var viewer = new MJPEGCANVAS.Viewer({
-                divID: 'mjpeg2',
-                host: 'localhost',
-                height:320,
-                width:190,
-                topic: 'image_topic'
-            });
 
-        }
+
+createViewer2 = function () {
+    if (window.innerWidth > 1200) {
+        var viewer = new MJPEGCANVAS.Viewer({
+            divID: 'mjpeg2',
+            host: 'localhost',
+            height: 220 * 2,
+            width: 300 * 2,
+            topic: 'image_topic'
+        });
+
     }
+    else if (window.innerWidth <= 1200 && window.innerWidth >= 1100) {
+        var viewer = new MJPEGCANVAS.Viewer({
+            divID: 'mjpeg2',
+            host: 'localhost',
+            height: 320,
+            width: 300,
+            topic: 'image_topic'
+        });
+    }
+    else if (window.innerWidth < 1100 && window.innerWidth >= 950) {
+        var viewer = new MJPEGCANVAS.Viewer({
+            divID: 'mjpeg2',
+            host: 'localhost',
+            height: 320,
+            width: 250,
+            topic: 'image_topic'
+        });
+    }
+    else if (window.innerWidth < 950 && window.innerWidth >= 900) {
+        var viewer = new MJPEGCANVAS.Viewer({
+            divID: 'mjpeg2',
+            host: 'localhost',
+            height: 320,
+            width: 230,
+            topic: 'image_topic'
+        });
+    }
+    else {
+        var viewer = new MJPEGCANVAS.Viewer({
+            divID: 'mjpeg2',
+            host: 'localhost',
+            height: 320,
+            width: 190,
+            topic: 'image_topic'
+        });
 
-
+    }
+}
 
 
 
 window.onload = function () {
-  
-    
-    var button = new ROSLIB.Topic({
-        ros: ros,
-        name: "/slideControl",
-        messageType: "std_msgs/Float32MultiArray"
-    });
-    // publish to ros code here
-    
-    var joint_states = new ROSLIB.Topic({
-        ros: ros,
-        name: "joint_states",
-        messageType: "sensor_msgs/JointState"
-    });
 
-    var a=[1,2,3,1,2,3] // test feedback
-    console.log(a);
-    
-    joint_states.subscribe(function (m) {
-        var val = m.position[0];
-        console.log(val)
-      
-        a = m.position;
-        console.log(a);
-        
-        //feedback joint states
 
-    });
 
     aj = function (data) {
         var j = new ROSLIB.Message({
@@ -212,8 +196,9 @@ window.onload = function () {
         button.publish(j);
     }
 
-    var slider = document.getElementById("myRange");
-    var output = document.getElementById("demo");
+
+    var slider1 = document.getElementById("myRange");
+    var output1 = document.getElementById("demo");
     var slider2 = document.getElementById("myRange2");
     var output2 = document.getElementById("demo2");
     var slider3 = document.getElementById("myRange3");
@@ -225,14 +210,15 @@ window.onload = function () {
     var slider6 = document.getElementById("myRange6");
     var output6 = document.getElementById("demo6");
 
-    slider.value = a[0];
+
+    slider1.value = a[0];
     slider2.value = a[1];
     slider3.value = a[2];
     slider4.value = a[3];
     slider5.value = a[4];
     slider6.value = a[5];
 
-    output.innerHTML = slider.value;
+    output1.innerHTML = slider.value;
     output2.innerHTML = slider2.value;
     output3.innerHTML = slider3.value;
     output4.innerHTML = slider4.value;
@@ -241,12 +227,14 @@ window.onload = function () {
 
 
 
-    
-    slider.oninput = function () {
-        output.innerHTML = this.value;
+
+    slider1.oninput = function () {
+        output1.innerHTML = this.value;
+
     }
-    slider.onchange = function () {
-        var join = output.innerHTML
+
+    slider1.onchange = function () {
+        var join = output1.innerHTML
         console.log(join)
         a[0] = Number(join)
         console.log(a)
@@ -255,7 +243,7 @@ window.onload = function () {
     slider2.oninput = function () {
         output2.innerHTML = this.value;
     }
-    
+
     slider2.onchange = function () {
         output2.innerHTML = this.value;
         var join2 = output2.innerHTML
@@ -308,15 +296,28 @@ window.onload = function () {
         console.log(a)
         aj(a);
     }
-    
+
+    // Get the modal
+    var modal = document.getElementById('id01');
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+    if (document.getElementById('username').value != 'admin') {
+        return error();
+    }
+
     createViewer2();
 
 
-    
+
     var viewer = new ROS3D.Viewer({
         divID: 'urdf',
-        height:220*2,
-        width:300*2,
+        height: 220 * 2,
+        width: 300 * 2,
         background: '#0574AF',
         antialias: true
     });
@@ -364,6 +365,46 @@ function power() {
         console.log("On");
     }// power on
 }
+function mode() {
+
+    if (toggle != true) {
+        // document.getElementById("onoff").innerHTML = "Off";
+        document.getElementById("togglemode").className = "btn btn-outline-danger mt-1 ms-2 mb-1";
+        document.getElementById("togglemode").innerHTML = "Auto";
+        document.getElementById("joint_cont").style.display = "none";
+
+        toggle = true;
+        // button.publish(zero);
+        console.log("man");
+    }//power off
+    else {
+        // document.getElementById("onoff").innerHTML = "On";
+        document.getElementById("togglemode").className = "btn btn-outline-primary mt-1 ms-2 mb-1";
+        document.getElementById("togglemode").innerHTML = "Manual";
+        document.getElementById("joint_cont").style.display = "initial";
+        // publish to ros code here
+
+
+
+        joint_states.subscribe(
+            function (m) {
+            a = m.position
+            function receive(){
+                var value = a;
+                return a
+            }
+            b = receive();
+            console.log(b);
+            //feedback joint states
+        });
+
+
+
+        toggle = false;
+        // button.publish(one);
+        console.log("au");
+    }// power on
+}
 function clearReset() {
     document.getElementById("shape").innerHTML = "...";
     document.getElementById("color").innerHTML = "...";
@@ -371,14 +412,15 @@ function clearReset() {
 
     console.log("reset");
 }//reset shape color and position
+
 function circle() {
-    
+
     document.getElementById("shape").innerHTML = "Circle";
     button.publish(three);
 
     console.log("Circle");
     console.log(window.innerWidth);
-    
+
 }
 function rectangle() {
     document.getElementById("shape").innerHTML = "Rectangle";

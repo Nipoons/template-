@@ -24,7 +24,9 @@
     <script type="text/javascript" src="http://static.robotwebtools.org/threejs/current/STLLoader.min.js"></script>
     <script type="text/javascript" src="http://static.robotwebtools.org/ros3djs/current/ros3d.min.js"></script>
     <!-- <script src="path/to/vanilla.js"></script> -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- <script src="https://kit.fontawesome.com/a076d05399.js"></script> -->
     <script src="../js/index.js"></script>
@@ -33,11 +35,12 @@
     <title>MRP Automation</title>
 </head>
 
-<body onresize="location.reload()" >
+<body onresize="location.reload()">
     <nav class="navbar navbar-expand-lg navbar-light bg-light"
         style="background-image: linear-gradient(rgb(238, 106, 29),rgb(233, 109, 37));">
         <div class="container-fluid">
-            <h5 class="navbar-brand"  style="color: #fff; cursor: default;"><i class="fas fa-code-branch"></i> MRP Automation</h5>
+            <h5 class="navbar-brand" style="color: #fff; cursor: default;"><i class="fas fa-code-branch"></i> MRP
+                Automation</h5>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation" style="background-color: rgba(255, 248, 248, 0.836);">
@@ -88,6 +91,8 @@
                     <h5 style="color:rgb(104, 103, 103); ">Power</h5>
                     <button id="togglebutton" class="btn btn-outline-success mt-1 ms-2 mb-1 " onclick="power()">Power
                         on</button>
+                    <h5 style="color:rgb(104, 103, 103); ">Mode</h5>
+                    <button id="togglemode" class="btn btn-outline-primary mt-1 ms-2 mb-1 " onclick="mode()">Manual</button>
                     <h5 style="color:rgb(104, 103, 103);">Shape</h5>
                     <button class="btn btn-outline-primary mt-1 ms-2 mb-1 " onclick="circle()">Circle</button>
                     <button class="btn btn-outline-primary mt-1 ms-2 mb-1" onclick="rectangle()">Rectangle</button>
@@ -217,13 +222,13 @@
                     </div>
                 </div>
                 <!-- controller -->
-                <div class="col-2 m-1 p-2 border">
+                <div id="joint_cont" class="col-2 m-1 p-2 border" style="display: default;">
                     <div>
                         <h5 style="color:rgb(104, 103, 103)">Controller</h5>
                         <div class="row gx-2 p-3 ">
                             <div class="col p-2 ">
                                 <div class="slidecontainer" style="align-items: center;">
-                                    <h5>joint1
+                                    <h5><span>joint1</span>
                                         <span>
                                             <input type="range" min="0" max="3.14" step="0.01" value="" class="slider"
                                                 id="myRange">
