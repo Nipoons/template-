@@ -75,10 +75,7 @@
                     </li>
 
                 </ul>
-                <div class="d-flex nav-item">
-                    <a class="nav-link" aria-current="page" href="#" style="color: #fff;">Log out</a>
-
-                </div>
+                
             </div>
         </div>
     </nav>
@@ -87,10 +84,6 @@
             <div class="row m-1">
                 <!-- button control  -->
                 <div class="col-1 m-1 p-2 border">
-
-                    <h5 style="color:rgb(104, 103, 103); ">Power</h5>
-                    <button id="togglebutton" class="btn btn-outline-success mt-1 ms-2 mb-1 " type="button" onclick="power()">Power
-                        on</button>
                     <h5 style="color:rgb(104, 103, 103); ">Mode</h5>
                     <button id="togglemode" class="btn btn-outline-primary mt-1 ms-2 mb-1 "
                         onclick="mode()">Change</button>
@@ -101,10 +94,16 @@
                     <button class="btn btn-outline-primary mt-1 ms-2 mb-1" onclick="red()">Red</button>
                     <button class="btn btn-outline-primary mt-1 ms-2 mb-1" onclick="green()">Green</button>
 
-                    <h5 style="color:rgb(104, 103, 103)">Position</h5>
-                    <button class="btn btn-outline-primary mt-1 ms-2 mb-1" onclick="box1()">Box 1</button>
-                    <button class="btn btn-outline-primary mt-1 ms-2 mb-1" onclick="box2()">Box 2</button>
-                    <button class="btn btn-outline-primary mt-1 ms-2 mb-1" onclick="box3()">Box 3</button>
+                    <h5 style="color:rgb(104, 103, 103)">Advances</h5>
+                    <button class="btn btn-outline-primary mt-1 ms-2 mb-1" onclick="box1()">Green-rec</button>
+                    <button class="btn btn-outline-primary mt-1 ms-2 mb-1" onclick="box2()">Green-cir</button>
+                    <button class="btn btn-outline-primary mt-1 ms-2 mb-1" onclick="box3()">Red-rec</button>
+                    <button class="btn btn-outline-primary mt-1 ms-2 mb-1" onclick="box4()">Red-cir</button>
+
+
+
+                    
+
 
                     <h5 style="color:rgb(104, 103, 103)">Reset</h5>
                     <button class="btn btn-outline-primary mt-1 ms-2 mb-1 " onclick="clearReset()">Reset</button>
@@ -127,18 +126,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm">
-                                <div class="card">
-                                    <div class="card-header p-2"
-                                        style="color: #fff; background-image: linear-gradient(rgb(16, 98, 153),rgb(22, 89, 175));">
-                                        <h5 style="text-transform: uppercase;">Power</h5>
-                                    </div>
-                                    <div class="card-body">
-                                        <h6 id="onoff">On</h6>
-                                    </div>
-                                </div>
-
-                            </div>
+                           
                             <div class="col-sm">
                                 <div class="card">
                                     <div class="card-header p-2"
@@ -174,17 +162,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm">
-                                <div class="card">
-                                    <div class="card-header p-2"
-                                        style="color: #fff; background-image: linear-gradient(rgb(16, 98, 153),rgb(22, 89, 175));">
-                                        <h5>Position</h5>
-                                    </div>
-                                    <div class="card-body">
-                                        <h6 id="position">...</h6>
-                                    </div>
-                                </div>
-                            </div>
+                            
                         </div>
                         <div class="row gx-2 p-3 justify-content-between">
                             <!-- robot model -->

@@ -19,6 +19,7 @@ var txt_listener2 = new ROSLIB.Topic({
     name: '/txt_msg',
     messageType: 'std_msgs/String'
 });
+
 var number_obs = new ROSLIB.Topic({
     ros: ros,
     name: '/num_obs',
@@ -90,17 +91,14 @@ type_obs.subscribe(function (k) {
 var button = new ROSLIB.Topic({
     ros: ros,
     name: "/button",
-    messageType: "std_msgs/Int16"
+    messageType: "std_msgs/Int16MultiArray"
 });
-var zero = new ROSLIB.Message({ data: 0 });//turn off
-var one = new ROSLIB.Message({ data: 1 });//turn on
-var two = new ROSLIB.Message({ data: 2 });//rec shp.
-var three = new ROSLIB.Message({ data: 3 });//cir shp.
-var four = new ROSLIB.Message({ data: 4 });//red
-var five = new ROSLIB.Message({ data: 5 });//green
-var six = new ROSLIB.Message({ data: 6 });//box1
-var seven = new ROSLIB.Message({ data: 7 });//box2
-var eight = new ROSLIB.Message({ data: 8 });//box3
+but_arr = function (data) {
+    var j = new ROSLIB.Message({
+        data: data
+    });
+    button2.publish(j);
+}
 
 ros.on('connection', function () {
 
@@ -130,6 +128,7 @@ var joint_states = new ROSLIB.Topic({
     name: "joint_states",
     messageType: "sensor_msgs/JointState"
 });
+
 
 
 
@@ -282,7 +281,7 @@ function mode() {
         var j = new ROSLIB.Message({
             data: data
         });
-        button.publish(j);
+        button2.publish(j);
     }
     aj(a);
 
@@ -396,64 +395,76 @@ function clearReset() {
     document.getElementById("shape").innerHTML = "...";
     document.getElementById("color").innerHTML = "...";
     document.getElementById("position").innerHTML = "...";
-
     console.log("reset");
 }//reset shape color and position
 
-var c = 1
 function circle() {
-    console.log(c)
-
     document.getElementById("shape").innerHTML = "Circle";
-    button.publish(three);
-
-    console.log("Circle");
-
-    return c++
-    
-
+    var arr = [];
+    arr[1]=3;
+    console.log(arr);
+    but_arr(arr);
 }
-
-
-
 function rectangle() {
-    // var c = circle();
-    console.log(c)
     document.getElementById("shape").innerHTML = "Rectangle";
-    button.publish(two);
-
-    console.log("Rectangle");
-    return c--
+    var arr = [];
+    arr[1]=4;
+    console.log(arr);
+    but_arr(arr);
 }
 function red() {
     document.getElementById("color").innerHTML = "Red";
-    button.publish(four);
-
-    console.log("Red");
+    var arr = [];
+    arr[0]=1
+    console.log(arr);
+    but_arr(arr);
 }
 function green() {
     document.getElementById("color").innerHTML = "Green";
-    button.publish(five);
+    var arr = [];
+    arr[0]=2
+    console.log(arr);
+    but_arr(arr);
 
     console.log("Green");
 }
 function box1() {
-    document.getElementById("position").innerHTML = "Box1";
-    button.publish(six);
+    document.getElementById("color").innerHTML = "Green";
+    document.getElementById("shape").innerHTML = "Rectangle";
+    var arr = [2,3];
+    console.log(arr);
+    but_arr(arr);
+    
+    
 
-    console.log("Box1");
+    // console.log("Box1");
 }
 function box2() {
-    document.getElementById("position").innerHTML = "Box2";
-    button.publish(seven);
+    document.getElementById("color").innerHTML = "Green";
+    document.getElementById("shape").innerHTML = "Circle";
+    var arr = [2,4];
+    console.log(arr);
+    but_arr(arr);
 
-    console.log("Box2");
+    // console.log("Box2");
 }
 function box3() {
-    document.getElementById("position").innerHTML = "Box3";
-    button.publish(eight);
+    document.getElementById("color").innerHTML = "Red";
+    document.getElementById("shape").innerHTML = "Rectangle";
+    var arr = [1,3];
+    console.log(arr);
+    but_arr(arr);
 
-    console.log("Box3");
+    // console.log("Box3");
+}
+function box4() {
+    document.getElementById("color").innerHTML = "Red";
+    document.getElementById("shape").innerHTML = "Circle";
+    var arr = [1,4];
+    console.log(arr);
+    but_arr(arr);
+
+    // console.log("Box3");
 }
 function emer() {
     alert("cut off");
