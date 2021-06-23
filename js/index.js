@@ -72,6 +72,7 @@ number_obs.subscribe(function (k) {
     document.getElementById("num_objects").innerHTML = k.data;
 
 });
+
 type_obs.subscribe(function (k) {
 
     if (k.data.includes(1)) {
@@ -150,7 +151,7 @@ var urdf = function(x,y){
         loader: ROS3D.COLLADA_LOADER_2
     });
 }
-var wx = 0;
+
 window.onload = function () {
     var sizew = document.getElementById('sizestream').clientWidth
     var sizeh = document.getElementById('sizestream').clientHeight
@@ -158,12 +159,9 @@ window.onload = function () {
     var sizemh = document.getElementById('sizemodel').clientHeight
 
     var h = sizeh -150;
-    var w = sizew -10-wx;
-    var mh = sizemh -44;
-    var mw = sizemw -10;
-
+    var w = sizew -10;
     createViewer2(h,w);
-    urdf(mh,mw);
+    urdf(h,w);
     
 
 }
@@ -185,9 +183,7 @@ function mode() {
                 var sizemh = document.getElementById('sizemodel').clientHeight
                 var h = sizeh -150;
                 var w = sizew -10;
-                var mh = sizemh -44;
-                var mw = sizemw -10;
-                $("#urdf").html(ajax_load).load(urdf(mh,mw));
+                $("#urdf").html(ajax_load).load(urdf(h,w));
             });
             $(function(){
                 // don't cache ajax or content won't be fresh
@@ -197,8 +193,6 @@ function mode() {
                 var ajax_load = []
                 var sizew = document.getElementById('sizestream').clientWidth
                 var sizeh = document.getElementById('sizestream').clientHeight
-                var sizemw = document.getElementById('sizemodel').clientWidth
-                var sizemh = document.getElementById('sizemodel').clientHeight
                 var h = sizeh -150;
                 var w = sizew -10;
                 $("#mjpeg2").html(ajax_load).load(createViewer2(h,w));
@@ -229,7 +223,7 @@ function mode() {
                 var w = sizew -10;
                 var mh = sizemh -44;
                 var mw = sizemw -10;
-                $("#urdf").html(ajax_load).load(urdf(mh,mw));
+                $("#urdf").html(ajax_load).load(urdf(h,w));
             });
             $(function(){
                 // don't cache ajax or content won't be fresh

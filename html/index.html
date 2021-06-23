@@ -170,8 +170,21 @@
                             <!-- robot model -->
                             <div class="col-5 p-1 border" id="sizemodel">
                                 <h5 style="color:rgb(104, 103, 103)">Model</h5>
-                                <div class="border" style="height: 23rem;">
-                                    <div id="urdf"></div>
+                                <div class="row mb-5">
+                                    <div class="col">
+                                        <div class="border" style="height: 23rem;">
+                                            <div id="urdf"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row " style="margin-top: 110px;">
+                                    <h5 style="color:rgb(104, 103, 103)">Set model</h5>
+                                    <div class="col">
+                                        <button class="btn btn-outline-primary mt-1 ms-2 mb-1" onclick="red()">Home</button>
+                                    </div>
+                                    <div class="col">
+                                        <button class="btn btn-outline-primary mt-1 ms-2 mb-1" onclick="green()">Stand</button>
+                                    </div>
                                 </div>
                             </div>
                             <!-- column 2 show camera stream and object -->
