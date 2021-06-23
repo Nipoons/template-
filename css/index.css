@@ -1,9 +1,18 @@
+.footer {
+    
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: left;
+}
+
 @media screen and (min-width: 768px) {
     button {
     width: 7rem;
 }
 .col-1 {
     width: 9rem;
+    
     
     /* background-color: ghostwhite; */
 }
@@ -27,14 +36,9 @@
 .full {
     height: 1000px;
 }
-.footer {
-    left: 0;
-    bottom: 0;
-    width: 100%;
 
-    text-align: left;
-}
 body {
+    
     height: 100%;
     margin: 0;
     padding: 0;
