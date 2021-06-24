@@ -1,24 +1,27 @@
-.footer {
-    
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    text-align: left;
+a{
+    color: white;
 }
-
+a:hover{
+    color: #1651d1;
+    transition: 0.5s all ease-in;
+}
 @media screen and (min-width: 768px) {
     button {
-    width: 7rem;
+    width: 9rem;
+    height: 3rem;
+    font-size: large;
+    font-style: bold;
 }
 .col-1 {
-    width: 9rem;
-    
-    
+    width: 12rem;
+    height: 57rem;
     /* background-color: ghostwhite; */
 }
 
 
-
+#joint_cont{
+    transition: all 1s ease-in;
+}
 .btn-outline-primary {
     color: rgb(19, 114, 192);
     border-color: rgb(19, 114, 192);
@@ -36,9 +39,14 @@
 .full {
     height: 1000px;
 }
+.footer {
+    left: 0;
+    bottom: 0;
+    width: 100%;
 
+    text-align: left;
+}
 body {
-    
     height: 100%;
     margin: 0;
     padding: 0;
