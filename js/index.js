@@ -8,7 +8,17 @@ var txt_listener = new ROSLIB.Topic({
     messageType: 'std_msgs/String'
 });
 
+var cmd_vel_listener = new ROSLIB.Topic({
+    ros: ros,
+    name: "/cmd_body",
+    messageType: 'geometry_msgs/Twist'
+});
 
+var txt_listener2 = new ROSLIB.Topic({
+    ros: ros,
+    name: '/txt_msg',
+    messageType: 'std_msgs/String'
+});
 var number_obs = new ROSLIB.Topic({
     ros: ros,
     name: '/num_obs',
@@ -26,6 +36,16 @@ var type_obs = new ROSLIB.Topic({
     messageType: 'std_msgs/Int16MultiArray'
 });
 
+
+var cmd_vel_listener2 = new ROSLIB.Topic({
+    ros: ros,
+    name: "/cmd_base",
+    messageType: 'geometry_msgs/Twist'
+});
+
+txt_listener2.subscribe(function (k) {
+    document.getElementById("msg2").innerHTML = k.data;
+});
 
 number_obs.subscribe(function (k) {
     document.getElementById("num_objects").innerHTML = k.data;
