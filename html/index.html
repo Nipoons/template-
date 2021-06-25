@@ -67,83 +67,83 @@
             </div>
         </div>
     </nav>
-    <div class="container-fluid p-2" style="min-height: 100%;">
+    <div class="container-fluid p-2" style="min-height: 100vh;">
         <div id="full">
             <div class="row m-1">
                 <!-- button control  -->
                 <div class="col-1 m-1 p-2 " style="border-radius: 8px; ">
 
                     <h5 style="color:rgb(104, 103, 103); ">Mode</h5>
-                    <button id="togglemode" class="btn btn-outline-primary mt-1 ms-2 mb-2 " style="font-size: large; "
+                    <button id="togglemode" class="btn btn-outline-primary mt-1 ms-2 mb-2  shadow" style="font-size: large; "
                         onclick="mode()">Change</button>
+                        <hr>
 
                     <h5 class="mt-2"style="color:rgb(104, 103, 103);">Shape</h5>
-                    <button id="hidebutt1" class="btn btn-outline-dark mt-1 ms-2 mb-2 " style="font-size: large; "
+                    <button id="hidebutt1" class="btn btn-outline-dark mt-1 ms-2 mb-2  shadow" style="font-size: large; "
                         onclick="circle()">Circle</button>
-                    <button id="hidebutt2" class="btn btn-outline-dark mt-1 ms-2 mb-2" style="font-size: large; "
+                    <button id="hidebutt2" class="btn btn-outline-dark mt-1 ms-2 mb-2  shadow" style="font-size: large; "
                         onclick="rectangle()">Rectangle</button>
+                        <hr>
 
-                    <h5 class="mt-2" style="color:rgb(104, 103, 103)">Color</h5>
-                    <button id="hidebutt3" class="btn btn-outline-dark mt-1 ms-2 mb-2" style="font-size: large; "
-                        onclick="red()">Red</button>
-                    <button id="hidebutt4" class="btn btn-outline-dark mt-1 ms-2 mb-3" style="font-size: large; "
-                        onclick="green()">Green</button>
-
-                    <h5 class="mt-2" style="color:rgb(104, 103, 103)">Advances</h5>
-                    <button id="hidebutt5" class="btn btn-outline-dark  mt-1 ms-2 mb-2" style="font-size: large; "
-                        onclick="box1()">Green-rec</button>
-                    <button id="hidebutt6" class="btn btn-outline-dark mt-1 ms-2 mb-2" style="font-size: large; "
-                        onclick="box2()">Green-cir</button>
-                    <button id="hidebutt7" class="btn btn-outline-dark mt-1 ms-2 mb-2" style="font-size: large; "
-                        onclick="box3()">Red-rec</button>
-                    <button id="hidebutt8" class="btn btn-outline-dark mt-1 ms-2 mb-3" style="font-size: large; "
-                        onclick="box4()">Red-cir</button>
-
-                    <h5 class="mt-2" style="color:rgb(104, 103, 103)">Reset</h5>
-                    <button id="hidebutt9" class="btn btn-outline-dark mt-1 ms-2 mb-3 " style="font-size: large; "
-                        onclick="clearReset()">Reset</button>
-
-                    <h5 class="mt-2"style="color:rgb(104, 103, 103)">Emergency</h5>
-                    <button id="hidebutt" class="btn btn-outline-danger mt-1 ms-2 mb-2 " style="font-size: large; "
-                        onclick="emer()">Shut down</button>
+                        <h5 class="mt-2" style="color:rgb(104, 103, 103)">Color</h5>
+                        <button id="hidebutt3" class="btn btn-outline-danger shadow mt-1 ms-2 mb-2" style="font-size: large; "
+                            onclick="red()">Red</button>
+                        <button id="hidebutt4" class="btn btn-outline-success mt-1 ms-2 mb-3  shadow" style="font-size: large; "
+                            onclick="green()">Green</button>
+                            <hr>
+    
+                        <h5 class="mt-2" style="color:rgb(104, 103, 103)">Options</h5>
+                        <button id="hidebutt5" class="btn btn-outline-success  mt-1 ms-2 mb-2  shadow" style="font-size: large;  line-height: 1;"
+                            onclick="box1()">Green Rectangle</button>
+                        <button id="hidebutt6" class="btn btn-outline-success mt-1 ms-2 mb-2 shadow" style="font-size: large;"
+                            onclick="box2()">Green Circle</button>
+                        <button id="hidebutt7" class="btn btn-outline-danger mt-1 ms-2 mb-2 shadow" style="font-size: large;  line-height: 1;"
+                            onclick="box3()">Red Rectangle</button>
+                        <button id="hidebutt8" class="btn btn-outline-danger mt-1 ms-2 mb-3 shadow" style="font-size: large; "
+                            onclick="box4()">Red Circle</button>
+                    <br/>
+                    <hr/>
+                    <button id="hidebutt9" class="btn btn-outline-dark mt-1 ms-2 mb-3  shadow" style="font-size: large; "
+                        onclick="pickall()">Pick all</button>
+                        
                 </div>
                 <!-- main -->
                 <div class="col m-1">
                     <div class=" mb-2  " style=" border-radius: 8px;">
-                        <div class="row gx-2 p-3 justify-content-around ">
+                        <div class="row gx-3 p-3 justify-content-around ">
                             <div class="col-sm-3">
-                                <div class="card" style="border-radius: 10px;border: rgb(184, 184, 184);">
+                                <div class="card shadow" style="border-radius: 10px;border: rgb(184, 184, 184);">
                                     <div class="card-header p-2"
                                         style="color: #fff; background-image: linear-gradient(rgb(16, 98, 153),rgb(22, 89, 175)); border-radius: 10px 10px 0 0; text-align: center; ">
                                         <h5>Server</h5>
                                     </div>
-                                    <div class="card-body" style="text-align: center;">
+                                    <div class="card-body" style="text-align: center; height: 4rem;">
                                         <h4 id="status" class="refresher">Disconnect</h4>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="col-sm-3">
-                                <div class="card" style="border-radius: 10px; border: rgb(184, 184, 184);">
+                                <div class="card shadow" style="border-radius: 10px; border: rgb(184, 184, 184);">
                                     <div class="card-header p-2"
                                         style="color: #fff; background-image: linear-gradient(rgb(16, 98, 153),rgb(22, 89, 175)); border-radius: 10px 10px 0 0; text-align: center;">
                                         <h5>Mode</h5>
                                     </div>
-                                    <div class="card-body" style="text-align: center; ">
+                                    <div class="card-body" style="text-align: center; height: 4rem; ">
                                         <h4 id="modechange">Auto</h4>
                                     </div>
                                 </div>
 
                             </div>
                             <div class="col-sm-3">
-                                <div class="card" style="border-radius: 10px;">
+                                <div class="card shadow" style="border-radius: 10px;">
                                     <div class="card-header p-2" style="color: #fff; background-image: linear-gradient(rgb(16, 98, 153),rgb(22, 89, 175));
                                         border-radius: 10px 10px 0 0;
                                         text-align: center;
                                         ">
                                         <h5>Shape</h5>
                                     </div>
-                                    <div class="card-body" style="text-align: center;">
+                                    <div class="card-body" style="text-align: center; height: 4rem;">
                                         <div style="display: inline-flex;">
                                             <h4 id="shape">-</h4>
                                             <span><h3> <i id="cir" class="far fa-circle fa-lg"
@@ -156,12 +156,12 @@
 
                             </div>
                             <div class="col-sm-3">
-                                <div class="card" style="border-radius: 10px; ">
+                                <div class="card shadow" style="border-radius: 10px; ">
                                     <div class="card-header p-2"
                                         style="color: #fff; background-image: linear-gradient(rgb(16, 98, 153),rgb(22, 89, 175)); border-radius: 10px 10px 0 0; text-align: center;">
                                         <h5>Color</h5>
                                     </div>
-                                    <div class="card-body" style="text-align: center;" style="text-align: center;">
+                                    <div class="card-body" style="text-align: center; height: 4rem;" >
                                         <h4 id="color">-</h4>
                                     </div>
                                 </div>
@@ -169,7 +169,7 @@
                         </div>
                         <div class="row gx-2 justify-content-center ">
                             <!-- robot model -->
-                            <div class="col-5   " id="sizemodel"
+                            <div class="col-5  shadow " id="sizemodel"
                                 style="margin-right: 100px;  border-radius: 8px; padding: 17px; background-color: #fff;">
                                 <h5 style="color:rgb(104, 103, 103)">Model</h5>
                                 <div class="row mb-5">
@@ -181,7 +181,7 @@
                                 </div>
                             </div>
                             <!-- column 2 show camera stream and object -->
-                            <div class="col-5  " id="sizestream"
+                            <div class="col-5 shadow " id="sizestream"
                                 style="border-radius: 8px; padding: 17px; background-color: #fff;">
                                 <div class="row mb-5 ">
                                     <h5 style="color:rgb(104, 103, 103)">Camera</h5>
@@ -222,7 +222,7 @@
                     </div>
                 </div>
                 <!-- controller -->
-                <div id="joint_cont" class="col-2 p-2  "
+                <div id="joint_cont" class="col-2 p-2  shadow "
                     style=" margin-right: 3rem; margin-top: 4rem; background-color: #fff; height: 52rem; display: none; border-radius: 8px;  ">
                     <div>
                         <h5 style="color:rgb(104, 103, 103)">Controller</h5>
@@ -232,7 +232,7 @@
                                 <div class="slidecontainer" style="align-items: center; ">
                                     <h5><span>Base Joint</span>
                                         <span>
-                                            <input type="range" min="0" max="3.14" step="0.01" value="" class="slider"
+                                            <input type="range" min="0" max="3.14" step="0.01" value="" class="slider  shadow"
                                                 id="myRange">
                                             <h6>Value: <span id="demo"></span></h6>
                                         </span>
@@ -242,7 +242,7 @@
                                 <div class="slidecontainer">
                                     <h5>Shoulder Joint
                                         <span> <input type="range" min="0.26" max="2.87" value='0.6' step="0.01"
-                                                value="" class="slider" id="myRange2">
+                                                value="" class="slider  shadow" id="myRange2">
                                             <h6>Value: <span id="demo2"></span></h6>
                                         </span>
                                     </h5>
@@ -251,7 +251,7 @@
                                 <div class="slidecontainer">
                                     <h5>Elbow Joint
                                         <span>
-                                            <input type="range" min="0" max="3.14" step="0.01" value="" class="slider"
+                                            <input type="range" min="0" max="3.14" step="0.01" value="" class="slider shadow"
                                                 id="myRange3">
                                             <h6>Value: <span id="demo3"></span></h6>
                                         </span>
@@ -261,7 +261,7 @@
                                 <div class="slidecontainer">
                                     <h5>Wrist Pitch Joint
                                         <span>
-                                            <input type="range" min="0" max="3.14" step="0.01" value="" class="slider"
+                                            <input type="range" min="0" max="3.14" step="0.01" value="" class="slider shadow"
                                                 id="myRange4">
                                             <h6>Value: <span id="demo4"></span></h6>
                                         </span>
@@ -271,7 +271,7 @@
                                 <div class="slidecontainer">
                                     <h5>Wrist Roll Joint
                                         <span>
-                                            <input type="range" min="0" max="3.14" step="0.01" value="" class="slider"
+                                            <input type="range" min="0" max="3.14" step="0.01" value="" class="slider shadow"
                                                 id="myRange5">
                                             <h6>Value: <span id="demo5"></span></h6>
                                         </span>
@@ -281,7 +281,7 @@
                                 <div class="slidecontainer">
                                     <h5>Gripper Joint
                                         <span>
-                                            <input type="range" min="0.2" max="1.65" step="0.01" value="" class="slider"
+                                            <input type="range" min="0.2" max="1.65" step="0.01" value="" class="slider shadow"
                                                 id="myRange6">
                                             <h6>Value: <span id="demo6"></span></h6>
                                         </span>
@@ -293,12 +293,12 @@
                             <h5 style="color:rgb(104, 103, 103)">Set model</h5>
                             <div class="row justify-content-around ">
                                 <div class="col-4">
-                                    <button id="hidebutt10" class="btn btn-outline-dark mt-1 ms-2 mb-1"
-                                        onclick="home()" style="font-size: x-large;">Home</button>
+                                    <button id="hidebutt10" class="btn btn-outline-dark mt-1 ms-2 mb-1  shadow"
+                                        onclick="home()" style="font-size: x-large; padding: 6px;">Home</button>
                                 </div>
                                 <div class="col-4">
-                                    <button id="hidebutt11" class="btn btn-outline-dark mt-1 ms-2 mb-1"
-                                        onclick="stand()" style="font-size: x-large;">Stand</button>
+                                    <button id="hidebutt11" class="btn btn-outline-dark mt-1 ms-2 mb-1  shadow"
+                                        onclick="stand()" style="font-size: x-large; padding: 6px;">Stand</button>
                                 </div>
 
                             </div>

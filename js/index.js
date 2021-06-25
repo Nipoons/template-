@@ -58,13 +58,6 @@ type_obs.subscribe(function (k) {
 
     test = k.data;
 
-    if (k.data.includes(1)) {
-        document.getElementById("type_objectsGC").innerHTML = "G - C";
-    }
-    else {
-        document.getElementById("type_objectsGC").innerHTML = [];
-    }
-
     if (k.data.includes(0)) {
         document.getElementById("type_objectsRC").innerHTML = "R - C";
     }
@@ -72,12 +65,11 @@ type_obs.subscribe(function (k) {
         document.getElementById("type_objectsRC").innerHTML = [];
     }
 
-
-    if (k.data.includes(3)) {
-        document.getElementById("type_objectsRR").innerHTML = "R - R";
+    if (k.data.includes(1)) {
+        document.getElementById("type_objectsGC").innerHTML = "G - C";
     }
     else {
-        document.getElementById("type_objectsRR").innerHTML = [];
+        document.getElementById("type_objectsGC").innerHTML = [];
     }
 
     if (k.data.includes(2)) {
@@ -86,6 +78,13 @@ type_obs.subscribe(function (k) {
     else {
 
         document.getElementById("type_objectsGR").innerHTML = [];
+    }
+
+    if (k.data.includes(3)) {
+        document.getElementById("type_objectsRR").innerHTML = "R - R";
+    }
+    else {
+        document.getElementById("type_objectsRR").innerHTML = [];
     }
 
 });
@@ -165,23 +164,21 @@ var urdf = function (x, y) {
     });
 }
 window.onload = function () {
-    
-        var sizew = document.getElementById('sizestream').clientWidth
-        var sizeh = document.getElementById('sizestream').clientHeight
-        var sizemw = document.getElementById('sizemodel').clientWidth
-        var sizemh = document.getElementById('sizemodel').clientHeight
 
-        var mh = sizemh - 70;
-        var mw = sizemw - 10 - 23;
+    var sizew = document.getElementById('sizestream').clientWidth
+    var sizeh = document.getElementById('sizestream').clientHeight
+    var sizemw = document.getElementById('sizemodel').clientWidth
+    var sizemh = document.getElementById('sizemodel').clientHeight
+
+    var mh = sizemh - 70;
+    var mw = sizemw - 10 - 23;
 
 
-        console.log(sizew)
-        var h = sizeh - 170;
-        var w = sizew - 10 - 23;
-        createViewer2(h, w);
-        urdf(mh, mw);
-  
-        
+    console.log(sizew)
+    var h = sizeh - 170;
+    var w = sizew - 10 - 23;
+    createViewer2(h, w);
+    urdf(mh, mw);
 
 
 
@@ -228,17 +225,30 @@ function mode() {
         document.getElementById("modechange").innerHTML = "Auto";
         document.getElementById("joint_cont").style.display = "none";
 
-        for (i = 1; i < 12; i++) {
-            document.getElementById("hidebutt" + i).className = "btn btn-outline-dark mt-1 ms-2 mb-2";
-        }
+
+        document.getElementById("hidebutt1").className = "btn btn-outline-dark mt-1 ms-2 mb-2  shadow";
+        document.getElementById("hidebutt2").className = "btn btn-outline-dark mt-1 ms-2 mb-2  shadow";
+        document.getElementById("hidebutt3").className = "btn btn-outline-danger mt-1 ms-2 mb-2  shadow";
+        document.getElementById("hidebutt4").className = "btn btn-outline-success mt-1 ms-2 mb-2 shadow";
+        document.getElementById("hidebutt5").className = "btn btn-outline-success mt-1 ms-2 mb-2 shadow";
+        document.getElementById("hidebutt6").className = "btn btn-outline-success mt-1 ms-2 mb-2 shadow";
+        document.getElementById("hidebutt7").className = "btn btn-outline-danger mt-1 ms-2 mb-2 shadow";
+        document.getElementById("hidebutt8").className = "btn btn-outline-danger mt-1 ms-2 mb-2 shadow";
+        document.getElementById("hidebutt9").className = "btn btn-outline-dark mt-1 ms-2 mb-2 shadow";
+        document.getElementById("hidebutt10").className = "btn btn-outline-dark mt-1 ms-2 mb-2 shadow";
+        document.getElementById("hidebutt11").className = "btn btn-outline-dark mt-1 ms-2 mb-2 shadow";
+
+
+
+
         toggle = false;
         console.log("Auto");
     }//power off
     else {
         for (i = 10; i < 12; i++) {
-            document.getElementById("hidebutt" + i).style.width = "4rem"
-            document.getElementById("hidebutt" + i).style.height = "2rem"
-            document.getElementById("hidebutt" + i).style.fontSize = "small"
+            document.getElementById("hidebutt" + i).style.width = "5rem"
+            document.getElementById("hidebutt" + i).style.height = "3rem"
+            // document.getElementById("hidebutt" + i).style.fontSize = "small"
         }
         // document.getElementById("togglemode").className = "btn btn-outline-danger mt-1 ms-2 mb-2";
 
@@ -281,10 +291,10 @@ function mode() {
         document.getElementById("joint_cont").style.display = "initial";
 
         for (i = 1; i < 10; i++) {
-            document.getElementById("hidebutt" + i).className = "btn btn-outline-dark mt-1 ms-2 mb-2 disabled";
+            document.getElementById("hidebutt" + i).className = "btn btn-outline-dark mt-1 ms-2 mb-2 disabled  shadow";
         }
 
-
+        console.log(a)
 
 
         aj = function (data) {
@@ -401,15 +411,39 @@ function mode() {
         console.log("Manual");
     }// power on
 }
-function clearReset() {
-    document.getElementById("shape").innerHTML = "-";
-    document.getElementById("color").innerHTML = "-";
-    document.getElementById("color").style.color="black"
-    document.getElementById('cir').style.display = 'none'
-    document.getElementById('sqr').style.display = 'none'
+function clearReset(data) {
+    if (data.data == 1) {
+        document.getElementById("shape").innerHTML = "-";
+        document.getElementById("color").innerHTML = "-";
+        document.getElementById("color").style.color = "black"
+        document.getElementById('cir').style.display = 'none'
+        document.getElementById('sqr').style.display = 'none'
 
-    console.log("reset");
+        console.log("reset");
+    }
+
 }//reset shape color and position
+
+var is_suc = new ROSLIB.Topic({
+    ros: ros,
+    name: "/is_pick_done",
+    messageType: "std_msgs/Int32"
+});
+
+is_suc.subscribe(function (m) {
+    if (m.data == 1) {
+        document.getElementById("shape").innerHTML = "-";
+        document.getElementById("color").innerHTML = "-";
+        document.getElementById("color").style.color = "black"
+        document.getElementById('cir').style.display = 'none'
+        document.getElementById('sqr').style.display = 'none'
+
+        console.log("reset");
+    }
+});
+
+
+
 var button2 = new ROSLIB.Topic({
     ros: ros,
     name: "/slideControl",
@@ -462,10 +496,14 @@ lp = function (data) {
 }
 
 var c = 1
+
 function circle() {
-    document.getElementById('cir').style.display = 'initial'
-    document.getElementById("cir").style.color="black"
-    document.getElementById("color").innerHTML = "-";
+    document.getElementById('cir').style.display = 'initial';
+    document.getElementById("cir").style.color = "black";
+    document.getElementById("color").innerHTML = "All color";
+    document.getElementById("color").style.color = "black"
+    document.getElementById("shape").innerHTML = "";
+    document.getElementById('sqr').style.display = 'none';
 
 
     var pos = pos_obs_sub;
@@ -473,13 +511,12 @@ function circle() {
     while (pos.length) newPos.push(pos.splice(0, 3));
     var i;
     var cc = [];
+    cc.push(1);
     for (i = 0; i < newPos.length; i++) {
         if (newPos[i][0] == 0 || newPos[i][0] == 1) {
             cc.push(newPos[i]);
         }
     }
-    document.getElementById("shape").innerHTML = "";
-    document.getElementById('sqr').style.display = 'none'
 
     console.log("Circle");
     var arr = [];
@@ -491,11 +528,15 @@ function circle() {
 }
 
 function rectangle() {
-    document.getElementById('cir').style.display = 'none'
-    document.getElementById('sqr').style.display = 'initial'
-    document.getElementById("color").innerHTML = "-";
-    document.getElementById("rec").style.color="black"
 
+    document.getElementById('sqr').style.display = 'initial'
+    document.getElementById('cir').style.display = 'none'
+
+    document.getElementById("color").innerHTML = "All color";
+    document.getElementById("color").style.color = "black"
+
+    document.getElementById("sqr").style.color = "black"
+    document.getElementById("shape").innerHTML = "";
 
 
     var pos = pos_obs_sub;
@@ -503,12 +544,13 @@ function rectangle() {
     while (pos.length) newPos.push(pos.splice(0, 3));
     var i;
     var rt = [];
+    rt.push(1);
     for (i = 0; i < newPos.length; i++) {
         if (newPos[i][0] == 2 || newPos[i][0] == 3) {
             rt.push(newPos[i]);
         }
     }
-    document.getElementById("shape").innerHTML = "";
+
     console.log("Rectangle");
     var arr = [];
     arr[1] = 4;
@@ -524,16 +566,19 @@ function red() {
     while (pos.length) newPos.push(pos.splice(0, 3));
     var i;
     var red = [];
+    red.push(2);
     for (i = 0; i < newPos.length; i++) {
         if (newPos[i][0] == 0 || newPos[i][0] == 3) {
             red.push(newPos[i]);
         }
     }
     document.getElementById("color").innerHTML = "Red";
-    document.getElementById("color").style.color="red"
-    document.getElementById("shape").innerHTML = "-";
-    document.getElementById('cir').style.display = 'none'
-    document.getElementById('sqr').style.display = 'none'
+    document.getElementById("color").style.color = "red"
+    document.getElementById("shape").innerHTML = "";
+    document.getElementById('cir').style.display = 'initial';
+    document.getElementById('sqr').style.display = 'initial';
+    document.getElementById("sqr").style.color = "red";
+    document.getElementById("cir").style.color = "red";
 
 
     console.log("Red");
@@ -551,16 +596,19 @@ function green() {
     while (pos.length) newPos.push(pos.splice(0, 3));
     var i;
     var grn = [];
+    grn.push(2);
     for (i = 0; i < newPos.length; i++) {
         if (newPos[i][0] == 1 || newPos[i][0] == 2) {
             grn.push(newPos[i]);
         }
     }
     document.getElementById("color").innerHTML = "Green";
-    document.getElementById("color").style.color="Green"
-    document.getElementById("shape").innerHTML = "-";
-    document.getElementById('cir').style.display = 'none'
-    document.getElementById('sqr').style.display = 'none'
+    document.getElementById("color").style.color = "Green"
+    document.getElementById("shape").innerHTML = " ";
+    document.getElementById('cir').style.display = 'initial'
+    document.getElementById('sqr').style.display = 'initial'
+    document.getElementById("sqr").style.color = "green"
+    document.getElementById("cir").style.color = "green"
 
 
 
@@ -581,14 +629,15 @@ function box1() {
     while (pos.length) newPos.push(pos.splice(0, 3));
     var i;
     var grnR = [];
+    grnR.push(3);
     for (i = 0; i < newPos.length; i++) {
         if (newPos[i][0] == 2) {
             grnR.push(newPos[i]);
         }
     }
     document.getElementById("color").innerHTML = "Green";
-    document.getElementById("color").style.color="Green"
-    document.getElementById("sqr").style.color="Green"
+    document.getElementById("color").style.color = "Green"
+    document.getElementById("sqr").style.color = "Green"
 
 
     document.getElementById("shape").innerHTML = "";
@@ -608,14 +657,15 @@ function box2() {
     while (pos.length) newPos.push(pos.splice(0, 3));
     var i;
     var grnC = [];
+    grnC.push(3)
     for (i = 0; i < newPos.length; i++) {
         if (newPos[i][0] == 1) {
             grnC.push(newPos[i]);
         }
     }
     document.getElementById("color").innerHTML = "Green";
-    document.getElementById("color").style.color="Green"
-    document.getElementById("cir").style.color="Green"
+    document.getElementById("color").style.color = "Green"
+    document.getElementById("cir").style.color = "Green"
 
 
     document.getElementById("shape").innerHTML = "";
@@ -635,14 +685,15 @@ function box3() {
     while (pos.length) newPos.push(pos.splice(0, 3));
     var i;
     var redR = [];
+    redR.push(3);
     for (i = 0; i < newPos.length; i++) {
         if (newPos[i][0] == 3) {
             redR.push(newPos[i]);
         }
     }
     document.getElementById("color").innerHTML = "Red";
-    document.getElementById("color").style.color="red"
-    document.getElementById("sqr").style.color="red"
+    document.getElementById("color").style.color = "red"
+    document.getElementById("sqr").style.color = "red"
 
 
     document.getElementById("shape").innerHTML = "";
@@ -665,14 +716,15 @@ function box4() {
     while (pos.length) newPos.push(pos.splice(0, 3));
     var i;
     var redC = [];
+    redC.push(3);
     for (i = 0; i < newPos.length; i++) {
         if (newPos[i][0] == 0) {
             redC.push(newPos[i]);
         }
     }
     document.getElementById("color").innerHTML = "Red";
-    document.getElementById("color").style.color="red"
-    document.getElementById("cir").style.color="red"
+    document.getElementById("color").style.color = "red"
+    document.getElementById("cir").style.color = "red"
 
 
     document.getElementById("shape").innerHTML = "";
@@ -684,6 +736,33 @@ function box4() {
     lp(redC.flat());
     // console.log("Box3");
 }
+
+function pickall() {
+
+
+    var pos = pos_obs_sub;
+    newPos = [];
+    while (pos.length) newPos.push(pos.splice(0, 3));
+    var i;
+    var all = [];
+    all.push(4);
+    for (i = 0; i < newPos.length; i++) {
+        all.push(newPos[i]);
+    }
+    console.log("Pick All");
+    console.log(all);
+    lp(all.flat());
+    document.getElementById('sqr').style.display = 'initial'
+    document.getElementById('cir').style.display = 'initial'
+    document.getElementById('cir').style.color = 'black'
+    document.getElementById('sqr').style.color = 'black'
+    document.getElementById("color").innerHTML = "All color";
+    document.getElementById("shape").innerHTML = " ";
+
+
+
+}
+
 function emer() {
     alert("cut off");
     power(true);
@@ -691,21 +770,82 @@ function emer() {
     button.publish(zero);
     console.log("shut down");
 }
+
 function home() {
     var j = new ROSLIB.Message({
         data: 0
     });
     pos_set_pub.publish(j)
     console.log("home");
+    function turn() {
+        var slider1 = document.getElementById("myRange");
+        var output1 = document.getElementById("demo");
+        var slider2 = document.getElementById("myRange2");
+        var output2 = document.getElementById("demo2");
+        var slider3 = document.getElementById("myRange3");
+        var output3 = document.getElementById("demo3");
+        var slider4 = document.getElementById("myRange4");
+        var output4 = document.getElementById("demo4");
+        var slider5 = document.getElementById("myRange5");
+        var output5 = document.getElementById("demo5");
+        var slider6 = document.getElementById("myRange6");
+        var output6 = document.getElementById("demo6");
+
+
+        slider1.value = 0;
+        slider2.value = 2.6;
+        slider3.value = 0.1;
+        slider4.value = 0.1;
+        slider5.value = 0;
+        slider6.value = 0.2;
+
+        output1.innerHTML = slider1.value;
+        output2.innerHTML = slider2.value;
+        output3.innerHTML = slider3.value;
+        output4.innerHTML = slider4.value;
+        output5.innerHTML = slider5.value;
+        output6.innerHTML = slider6.value;
+
+    }
+    turn();
+
 }
 
 function stand() {
+
+    var slider1 = document.getElementById("myRange");
+    var output1 = document.getElementById("demo");
+    var slider2 = document.getElementById("myRange2");
+    var output2 = document.getElementById("demo2");
+    var slider3 = document.getElementById("myRange3");
+    var output3 = document.getElementById("demo3");
+    var slider4 = document.getElementById("myRange4");
+    var output4 = document.getElementById("demo4");
+    var slider5 = document.getElementById("myRange5");
+    var output5 = document.getElementById("demo5");
+    var slider6 = document.getElementById("myRange6");
+    var output6 = document.getElementById("demo6");
+
+
+    slider1.value = 0;
+    slider2.value = 1.57;
+    slider3.value = 1.57;
+    slider4.value = 1.57;
+    slider5.value = 0;
+    slider6.value = 0.2;
+
+    output1.innerHTML = slider1.value;
+    output2.innerHTML = slider2.value;
+    output3.innerHTML = slider3.value;
+    output4.innerHTML = slider4.value;
+    output5.innerHTML = slider5.value;
+    output6.innerHTML = slider6.value;
     var j = new ROSLIB.Message({
         data: 1
     });
     pos_set_pub.publish(j)
 
     console.log("stand");
+    console.log(a)
+
 }
-
-
